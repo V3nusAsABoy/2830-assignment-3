@@ -23,6 +23,24 @@ q1Incorrect = [1, 4, 5];
 const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
 question1.generateQuestion();
 
+let options = document.getElementsByClassName("option");
+
+for(let i = 0; i < options.length; i++){
+
+    options[i].addEventListener("click", function(){
+
+        options[i].classList.toggle("selected");
+
+        for(let j = 0; j < options.length; j++){
+            if(i != j){
+                if(options[j].classList.contains("selected")){
+                    options[j].classList.remove("selected");
+                }
+            }
+        }
+    });
+}
+
 function shuffle(array) {
     let currentIndex = array.length;
   
@@ -34,5 +52,5 @@ function shuffle(array) {
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
-  }
+}
 
