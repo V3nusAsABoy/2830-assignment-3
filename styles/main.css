@@ -1,11 +1,14 @@
 #Options{
     display:flex;
     flex-direction: column;
-    max-width: 20em;
+    max-width: 50em;
 }
 
 button{
-    height:2em;
+    height:5em;
     margin-bottom:0.5em;
 }
 
+#submit{
+    width:15em;
+}
