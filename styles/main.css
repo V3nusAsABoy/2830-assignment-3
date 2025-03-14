@@ -1,0 +1,11 @@
+#Options{
+    display:flex;
+    flex-direction: column;
+    max-width: 20em;
+}
+
+button{
+    height:2em;
+    margin-bottom:0.5em;
+}
+

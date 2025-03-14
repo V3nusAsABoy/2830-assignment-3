@@ -6,7 +6,7 @@ class multipleChoice{
         this.answers = rightAnswer.concat(wrongAnswers);
     }
 
-    generateQuestion(){
+    generateQuestion(multipleChoice){
         
     }
 }
