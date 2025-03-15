@@ -60,6 +60,7 @@ question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
 question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
 const questions = [question1, question2];
 current = 0;
+document.getElementById("QuestionNum").innerHTML = `Question ${current+1} out of ${questions.length}`;
 question1.generateQuestion();
 
 document.getElementById("next").addEventListener("click", function(){
@@ -70,5 +71,13 @@ document.getElementById("next").addEventListener("click", function(){
         }
     }
     current++;
-    questions[current].generateQuestion();
+    if(current != questions.length){
+        questions[current].generateQuestion();
+        document.getElementById("QuestionNum").innerHTML = `Question ${current+1} out of ${questions.length}`;
+        if(current == questions.length - 1){
+            document.getElementById("next").innerHTML = "submit";
+        }
+    } else {
+        location.href = "./results.html";
+    }
 });
