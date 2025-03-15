@@ -4,6 +4,7 @@ class multipleChoice{
         this.rightAnswer = rightAnswer;
         this.wrongAnswers = wrongAnswers;
         this.answers = rightAnswer.concat(wrongAnswers);
+        this.selectedAnswer;
     }
 
     generateQuestion(){
@@ -51,6 +52,25 @@ q1 = "What's 1 + 1";
 q1Correct = [2];
 q1Incorrect = [1, 4, 5];
 
-const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
-question1.generateQuestion();
+q2 = "What's 1 - 1";
+q2Correct = [0];
+q2Incorrect = [1, 4, 5];
 
+const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
+const question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
+const questions = [question1, question2]
+currentQuestion = questions[0];
+current = 0;
+currentQuestion.generateQuestion();
+
+document.getElementById("next").addEventListener("click", function(){
+    for(let i = 0; i < options.length; i++){
+        if(options[i].classList.contains("selected")){
+            currentQuestion.selectedAnswer = options[i].innerHTML;
+            options[i].classList.remove("selected");
+        }
+        current++;
+        currentQuestion = questions[current];
+        currentQuestion.generateQuestion();
+    }
+});
