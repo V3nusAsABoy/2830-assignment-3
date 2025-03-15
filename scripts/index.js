@@ -67,9 +67,8 @@ document.getElementById("next").addEventListener("click", function(){
         if(options[i].classList.contains("selected")){
             questions[current].selectedAnswer = options[i].innerHTML;
             options[i].classList.remove("selected");
-            console.log(question1.selectedAnswer);
         }
-        current++;
-        questions[current].generateQuestion();
     }
+    current++;
+    questions[current].generateQuestion();
 });
