@@ -1,5 +1,7 @@
-class multipleChoice{
-    constructor(question, rightAnswer, wrongAnswers){
+import { finalScoreIndicator } from "./getFinalScore.js";
+
+class multipleChoice {
+    constructor(question, rightAnswer, wrongAnswers) {
         this.question = question;
         this.rightAnswer = rightAnswer;
         this.wrongAnswers = wrongAnswers;
@@ -7,7 +9,7 @@ class multipleChoice{
         this.selectedAnswer;
     }
 
-    generateQuestion(){
+    generateQuestion() {
         document.getElementById("Question").innerHTML = this.question;
         shuffle(this.answers);
         document.getElementById("option1").innerHTML = this.answers[0];
@@ -19,15 +21,13 @@ class multipleChoice{
 
 let options = document.getElementsByClassName("option");
 
-for(let i = 0; i < options.length; i++){
-
-    options[i].addEventListener("click", function(){
-
+for (let i = 0; i < options.length; i++) {
+    options[i].addEventListener("click", function () {
         options[i].classList.toggle("selected");
 
-        for(let j = 0; j < options.length; j++){
-            if(i != j){
-                if(options[j].classList.contains("selected")){
+        for (let j = 0; j < options.length; j++) {
+            if (i != j) {
+                if (options[j].classList.contains("selected")) {
                     options[j].classList.remove("selected");
                 }
             }
@@ -37,47 +37,53 @@ for(let i = 0; i < options.length; i++){
 
 function shuffle(array) {
     let currentIndex = array.length;
-  
+
     while (currentIndex != 0) {
-  
-      let randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
     }
 }
 
-q1 = "What's 1 + 1";
-q1Correct = [2];
-q1Incorrect = [1, 4, 5];
+const q1 = "What's 1 + 1";
+const q1Correct = [2];
+const q1Incorrect = [1, 4, 5];
 
-q2 = "What's 1 - 1";
-q2Correct = [0];
-q2Incorrect = [1, 4, 5];
+const q2 = "What's 1 - 1";
+const q2Correct = [0];
+const q2Incorrect = [1, 4, 5];
 
-question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
-question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
+const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
+const question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
 const questions = [question1, question2];
-current = 0;
-document.getElementById("QuestionNum").innerHTML = `Question ${current+1} out of ${questions.length}`;
+let current = 0;
+let score = 0;
+let finalScore;
+
+document.getElementById("QuestionNum").innerHTML = `Question ${current + 1} out of ${questions.length}`;
 question1.generateQuestion();
 
-document.getElementById("next").addEventListener("click", function(){
-    for(let i = 0; i < options.length; i++){
-        if(options[i].classList.contains("selected")){
+document.getElementById("next").addEventListener("click", function () {
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].classList.contains("selected")) {
             questions[current].selectedAnswer = options[i].innerHTML;
+            if (questions[current].selectedAnswer == questions[current].rightAnswer) {
+                score++;
+            }
             options[i].classList.remove("selected");
         }
     }
     current++;
-    if(current != questions.length){
+    if (current != questions.length) {
         questions[current].generateQuestion();
-        document.getElementById("QuestionNum").innerHTML = `Question ${current+1} out of ${questions.length}`;
-        if(current == questions.length - 1){
+        document.getElementById("QuestionNum").innerHTML = `Question ${current + 1} out of ${questions.length}`;
+        if (current == questions.length - 1) {
             document.getElementById("next").innerHTML = "submit";
         }
     } else {
+        finalScoreIndicator();
         location.href = "./results.html";
     }
 });
