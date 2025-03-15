@@ -56,21 +56,20 @@ q2 = "What's 1 - 1";
 q2Correct = [0];
 q2Incorrect = [1, 4, 5];
 
-const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
-const question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
-const questions = [question1, question2]
-currentQuestion = questions[0];
+question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
+question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
+const questions = [question1, question2];
 current = 0;
-currentQuestion.generateQuestion();
+question1.generateQuestion();
 
 document.getElementById("next").addEventListener("click", function(){
     for(let i = 0; i < options.length; i++){
         if(options[i].classList.contains("selected")){
-            currentQuestion.selectedAnswer = options[i].innerHTML;
+            questions[current].selectedAnswer = options[i].innerHTML;
             options[i].classList.remove("selected");
+            console.log(question1.selectedAnswer);
         }
         current++;
-        currentQuestion = questions[current];
-        currentQuestion.generateQuestion();
+        questions[current].generateQuestion();
     }
 });
