@@ -1,5 +1,6 @@
-import { finalScoreIndicator } from "./getFinalScore.js";
+import { getFinalScore } from "./index.js";
 
-let finalScore = finalScoreIndicator();
+let final = getFinalScore();
+console.log(final);
 
-document.getElementById("finalScore").innerHTML = `Final Score: ${finalScore}`;
+document.getElementById("finalScore").innerHTML = `Final Score: ${final}`;

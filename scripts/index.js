@@ -1,5 +1,3 @@
-import { finalScoreIndicator } from "./getFinalScore.js";
-
 class multipleChoice {
     constructor(question, rightAnswer, wrongAnswers) {
         this.question = question;
@@ -84,6 +82,14 @@ document.getElementById("next").addEventListener("click", function () {
         }
     } else {
         finalScoreIndicator();
-        location.href = "./results.html";
+        location.href = "./results.html"
     }
 });
+
+function finalScoreIndicator() {
+    finalScore = score; 
+}
+
+export function getFinalScore() {
+    return finalScore;
+}
