@@ -14,12 +14,9 @@ class multipleChoice {
         document.getElementById("option2").innerHTML = this.answers[1];
         document.getElementById("option3").innerHTML = this.answers[2];
         document.getElementById("option4").innerHTML = this.answers[3];
-        if(document.getElementById("option3").style.display === "none"){
-            document.getElementById("option3").style.display = "block";
-        }
-        if(document.getElementById("option4").style.display === "none"){
-            document.getElementById("option4").style.display = "block";
-        }
+        document.getElementById("option3").style.display = "block";
+        document.getElementById("option4").style.display = "block";
+        document.getElementById("textInput").style.display = "none";
     }
 }
 
@@ -40,6 +37,15 @@ class trueFalse{
         document.getElementById("option2").innerHTML = "False";
         document.getElementById("option3").style.display = "none";
         document.getElementById("option4").style.display = "none";
+        document.getElementById("textInput").style.display = "none";
+    }
+}
+
+class fillInTheBlank{
+    constructor(question, rightAnswer){
+        this.question = question;
+        this.rightAnswer = rightAnswer;
+        this.selectedAnswer;
     }
 }
 
@@ -99,12 +105,13 @@ question1.generateQuestion();
 
 document.getElementById("next").addEventListener("click", function () {
     for (let i = 0; i < options.length; i++) {
-        if (options[i].classList.contains("selected")) {
+        if (options[i].classList.contains("selected") || options[i].classList.contains("textInput")) {
             questions[current].selectedAnswer = options[i].innerHTML;
             if (questions[current].selectedAnswer == questions[current].rightAnswer) {
                 score++;
             }
             options[i].classList.remove("selected");
+            i = options.length;
         }
     }
     current++;
