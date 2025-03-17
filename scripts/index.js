@@ -47,18 +47,28 @@ class fillInTheBlank{
         this.rightAnswer = rightAnswer;
         this.selectedAnswer;
     }
+
+    generateQuestion(){
+        document.getElementById("Question").innerHTML = this.question;
+        document.getElementById("option1").style.display = "none";
+        document.getElementById("option2").style.display = "none";
+        document.getElementById("option3").style.display = "none";
+        document.getElementById("option4").style.display = "none";
+        document.getElementById("textInput").style.display = "block";
+    }
 }
 
 let options = document.getElementsByClassName("option");
+let buttons = document.getElementsByClassName("button");
 
-for (let i = 0; i < options.length; i++) {
-    options[i].addEventListener("click", function () {
-        options[i].classList.toggle("selected");
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function () {
+        buttons[i].classList.toggle("selected");
 
-        for (let j = 0; j < options.length; j++) {
+        for (let j = 0; j < buttons.length; j++) {
             if (i != j) {
-                if (options[j].classList.contains("selected")) {
-                    options[j].classList.remove("selected");
+                if (buttons[j].classList.contains("selected")) {
+                    buttons[j].classList.remove("selected");
                 }
             }
         }
@@ -91,11 +101,15 @@ const q4 = "What's 4 / 2";
 const q4Correct = [2];
 const q4Incorrect = [1, 4, 5];
 
+const q5 = "3 + ___ = 8";
+const q5Correct = "5";
+
 const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
 const question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
 const question3 = new trueFalse(q3, true);
 const question4 = new multipleChoice(q4, q4Correct, q4Incorrect);
-const questions = [question1, question2, question3, question4];
+const question5 = new fillInTheBlank(q5, q5Correct);
+const questions = [question1, question2, question3, question4, question5];
 let current = 0;
 let score = 0;
 let finalScore;
@@ -105,13 +119,18 @@ question1.generateQuestion();
 
 document.getElementById("next").addEventListener("click", function () {
     for (let i = 0; i < options.length; i++) {
-        if (options[i].classList.contains("selected") || options[i].classList.contains("textInput")) {
+        if (options[i].classList.contains("selected")) {
             questions[current].selectedAnswer = options[i].innerHTML;
             if (questions[current].selectedAnswer == questions[current].rightAnswer) {
                 score++;
             }
             options[i].classList.remove("selected");
             i = options.length;
+        } else if (options[i].id == "textInput"){
+            questions[current].selectedAnswer = options[i].value;
+            if (questions[current].selectedAnswer == questions[current].rightAnswer) {
+                score++;
+            }
         }
     }
     current++;
