@@ -81,10 +81,15 @@ const q2Incorrect = [1, 4, 5];
 
 const q3 = "5 x 5 = 25";
 
+const q4 = "What's 4 / 2";
+const q4Correct = [2];
+const q4Incorrect = [1, 4, 5];
+
 const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
 const question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
 const question3 = new trueFalse(q3, true);
-const questions = [question1, question2, question3];
+const question4 = new multipleChoice(q4, q4Correct, q4Incorrect);
+const questions = [question1, question2, question3, question4];
 let current = 0;
 let score = 0;
 let finalScore;
