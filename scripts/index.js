@@ -148,4 +148,24 @@ document.getElementById("next").addEventListener("click", function () {
 function displayResults(){
     document.getElementById("quiz").style.display = "none";
     document.getElementById("Question").innerHTML = `Final Score: ${score}/${questions.length}`;
+    for(let i = 0; i < questions.length; i++){
+        if(questions[i].selectedAnswer == questions[i].rightAnswer){
+            let q = document.createElement("h3");
+            let c = document.createElement("p");
+            q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
+            c.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Correct)`;
+            document.body.append(q);
+            document.body.appendChild(c);
+        } else {
+            let q = document.createElement("h3");
+            let c = document.createElement("p");
+            let iC = document.createElement("p");
+            q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
+            c.innerHTML = `Answer: ${questions[i].rightAnswer}`;
+            iC.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Incorrect)`;
+            document.body.append(q);
+            document.body.appendChild(iC);
+            document.body.appendChild(c);
+        }
+    }
 }
