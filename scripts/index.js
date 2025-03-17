@@ -58,6 +58,7 @@ class fillInTheBlank{
     }
 }
 
+document.getElementById("quiz").style.display = "none";
 let options = document.getElementsByClassName("option");
 let buttons = document.getElementsByClassName("button");
 
@@ -104,18 +105,10 @@ const q4Incorrect = [1, 4, 5];
 const q5 = "3 + ___ = 8";
 const q5Correct = "5";
 
-const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
-const question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
-const question3 = new trueFalse(q3, true);
-const question4 = new multipleChoice(q4, q4Correct, q4Incorrect);
-const question5 = new fillInTheBlank(q5, q5Correct);
-const questions = [question1, question2, question3, question4, question5];
+const questions = [];
 let current = 0;
 let score = 0;
 let finalScore;
-
-document.getElementById("QuestionNum").innerHTML = `Question ${current + 1} out of ${questions.length}`;
-question1.generateQuestion();
 
 document.getElementById("next").addEventListener("click", function () {
     for (let i = 0; i < options.length; i++) {
@@ -154,7 +147,7 @@ function displayResults(){
             let c = document.createElement("p");
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
             c.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Correct)`;
-            document.body.append(q);
+            document.body.appendChild(q);
             document.body.appendChild(c);
         } else {
             let q = document.createElement("h3");
@@ -163,9 +156,21 @@ function displayResults(){
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
             c.innerHTML = `Answer: ${questions[i].rightAnswer}`;
             iC.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Incorrect)`;
-            document.body.append(q);
+            document.body.appendChild(q);
             document.body.appendChild(iC);
             document.body.appendChild(c);
         }
     }
 }
+
+document.getElementById("new").addEventListener("click", function (){
+    let d = document.createElement("div");
+    let l1 = document.createElement("label");
+    let n = document.createElement("input");
+
+    l1.innerHTML = "Question: ";
+    
+    document.getElementById("quizMaker").appendChild(d);
+    d.appendChild(l1);
+    d.appendChild(n);
+});
