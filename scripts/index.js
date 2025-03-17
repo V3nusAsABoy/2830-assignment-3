@@ -80,16 +80,12 @@ document.getElementById("next").addEventListener("click", function () {
         if (current == questions.length - 1) {
             document.getElementById("next").innerHTML = "submit";
         }
-    } else {
-        finalScoreIndicator();
-        location.href = "./results.html"
+    } else{
+        displayResults();
     }
 });
 
-function finalScoreIndicator() {
-    finalScore = score; 
-}
-
-export function getFinalScore() {
-    return finalScore;
+function displayResults(){
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("Question").innerHTML = `Final Score: ${score}/${questions.length}`;
 }
