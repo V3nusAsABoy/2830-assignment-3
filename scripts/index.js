@@ -14,6 +14,32 @@ class multipleChoice {
         document.getElementById("option2").innerHTML = this.answers[1];
         document.getElementById("option3").innerHTML = this.answers[2];
         document.getElementById("option4").innerHTML = this.answers[3];
+        if(document.getElementById("option3").style.display === "none"){
+            document.getElementById("option3").style.display = "block";
+        }
+        if(document.getElementById("option4").style.display === "none"){
+            document.getElementById("option4").style.display = "block";
+        }
+    }
+}
+
+class trueFalse{
+    constructor(question, tf){
+        this.question = question;
+        if(tf == true){
+            this.rightAnswer = "True";
+        } else {
+            this.rightAnswer = "False";
+        }
+        this.selectedAnswer;
+    }
+
+    generateQuestion(){
+        document.getElementById("Question").innerHTML = this.question;
+        document.getElementById("option1").innerHTML = "True";
+        document.getElementById("option2").innerHTML = "False";
+        document.getElementById("option3").style.display = "none";
+        document.getElementById("option4").style.display = "none";
     }
 }
 
@@ -53,9 +79,12 @@ const q2 = "What's 1 - 1";
 const q2Correct = [0];
 const q2Incorrect = [1, 4, 5];
 
+const q3 = "5 x 5 = 25";
+
 const question1 = new multipleChoice(q1, q1Correct, q1Incorrect);
 const question2 = new multipleChoice(q2, q2Correct, q2Incorrect);
-const questions = [question1, question2];
+const question3 = new trueFalse(q3, true);
+const questions = [question1, question2, question3];
 let current = 0;
 let score = 0;
 let finalScore;
