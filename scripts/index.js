@@ -219,4 +219,56 @@ document.getElementById("new").addEventListener("click", function (){
 
         d.appendChild(inputMulChoice);
     })
+
+    tf.addEventListener("click", function () {
+        mode.style.display = "none";
+
+        let inputtf = document.createElement("div");
+
+        let answerLabel = document.createElement("label");
+        answerLabel.innerHTML = "Answer: ";
+
+        let trueButton = document.createElement("button");
+        trueButton.innerHTML = "True"
+
+        let falseButton = document.createElement("button");
+        falseButton.innerHTML = "False"
+
+        let submittf = document.createElement("button");
+        submittf.innerHTML = "generate question";
+
+        trueButton.addEventListener("click", function () {
+            trueButton.classList.add("selected");
+            if(falseButton.classList.contains("selected")){
+                falseButton.classList.remove("selected");
+            }
+        });
+
+        falseButton.addEventListener("click", function () {
+            falseButton.classList.add("selected");
+            if(trueButton.classList.contains("selected")){
+                trueButton.classList.remove("selected");
+            }
+        });
+
+        submittf.addEventListener("click", function () {
+            if(trueButton.classList.contains("selected")){
+                q = new trueFalse(n.value, true);
+                questions = questions.concat(q);
+                d.style.display = "none";
+
+            } else if(falseButton.classList.contains("selected")) {
+                q = new trueFalse(n.value, false);
+                questions = questions.concat(q);
+                d.style.display = "none";
+            }
+        });
+
+        inputtf.appendChild(answerLabel);
+        inputtf.appendChild(trueButton);
+        inputtf.appendChild(falseButton);
+        inputtf.appendChild(submittf);
+
+        d.appendChild(inputtf);
+    })
 });
