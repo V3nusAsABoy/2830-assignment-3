@@ -88,26 +88,10 @@ function shuffle(array) {
     }
 }
 
-const q1 = "What's 1 + 1";
-const q1Correct = [2];
-const q1Incorrect = [1, 4, 5];
-
-const q2 = "What's 1 - 1";
-const q2Correct = [0];
-const q2Incorrect = [1, 4, 5];
-
-const q3 = "5 x 5 = 25";
-
-const q4 = "What's 4 / 2";
-const q4Correct = [2];
-const q4Incorrect = [1, 4, 5];
-
-const q5 = "3 + ___ = 8";
-const q5Correct = "5";
-
-const questions = [];
+let questions = [];
 let current = 0;
 let score = 0;
+let qNum = 0;
 let finalScore;
 
 document.getElementById("next").addEventListener("click", function () {
@@ -164,6 +148,7 @@ function displayResults(){
 }
 
 document.getElementById("new").addEventListener("click", function (){
+    qNum++;
     let d = document.createElement("div");
     let l1 = document.createElement("label");
     let n = document.createElement("input");
@@ -209,6 +194,15 @@ document.getElementById("new").addEventListener("click", function (){
         wrongAnswerLabel3.innerHTML = "Option 4: "
         let wrongAnswerType3 = document.createElement("input");
 
+        let submitMulChoice = document.createElement("button");
+        submitMulChoice.innerHTML = "generate question";
+
+        submitMulChoice.addEventListener("click", function () {
+            q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value]);
+            questions = questions.concat(q);
+            d.style.display = "none";
+        });
+
         inputMulChoice.appendChild(rightAnswerLabel);
         inputMulChoice.appendChild(rightAnswerType);
 
@@ -220,6 +214,8 @@ document.getElementById("new").addEventListener("click", function (){
 
         inputMulChoice.appendChild(wrongAnswerLabel3);
         inputMulChoice.appendChild(wrongAnswerType3);
+
+        inputMulChoice.appendChild(submitMulChoice);
 
         d.appendChild(inputMulChoice);
     })
