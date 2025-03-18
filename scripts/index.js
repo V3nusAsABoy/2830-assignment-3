@@ -271,4 +271,30 @@ document.getElementById("new").addEventListener("click", function (){
 
         d.appendChild(inputtf);
     })
+
+    fitb.addEventListener("click", function () {
+        mode.style.display = "none";
+
+        let inputfitb = document.createElement("div");
+
+        let answerLabel = document.createElement("label");
+        answerLabel.innerHTML = "Answer: ";
+
+        let answerType = document.createElement("input");
+
+        let submitfitb = document.createElement("button");
+        submitfitb.innerHTML = "generate question";
+
+        submitfitb.addEventListener("click", function () {
+            q = new fillInTheBlank(n.value, answerType.value);
+            questions = questions.concat(q);
+            d.style.display = "none";
+        });
+
+        inputfitb.appendChild(answerLabel);
+        inputfitb.appendChild(answerType);
+        inputfitb.appendChild(submitfitb);
+
+        d.appendChild(inputfitb);
+    })
 });
