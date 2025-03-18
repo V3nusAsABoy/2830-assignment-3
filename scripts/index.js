@@ -173,4 +173,54 @@ document.getElementById("new").addEventListener("click", function (){
     document.getElementById("quizMaker").appendChild(d);
     d.appendChild(l1);
     d.appendChild(n);
+
+    let mode = document.createElement("div");
+    let mulChoice = document.createElement("button");
+    let tf = document.createElement("button");
+    let fitb = document.createElement("button");
+
+    mulChoice.innerHTML = "Multiple Choice";
+    tf.innerHTML = "True or false";
+    fitb.innerHTML = "Fill in the blank";
+
+    mode.appendChild(mulChoice);
+    mode.appendChild(tf);
+    mode.appendChild(fitb);
+    d.appendChild(mode);
+
+    mulChoice.addEventListener("click", function () {
+        mode.style.display = "none";
+
+        let inputMulChoice = document.createElement("div");
+
+        let rightAnswerLabel = document.createElement("label");
+        rightAnswerLabel.innerHTML = "Correct Answer: "
+        let rightAnswerType = document.createElement("input");
+
+        let wrongAnswerLabel1 = document.createElement("label");
+        wrongAnswerLabel1.innerHTML = "Option 2: "
+        let wrongAnswerType1 = document.createElement("input");
+
+        let wrongAnswerLabel2 = document.createElement("label");
+        wrongAnswerLabel2.innerHTML = "Option 3: "
+        let wrongAnswerType2 = document.createElement("input");
+
+        let wrongAnswerLabel3 = document.createElement("label");
+        wrongAnswerLabel3.innerHTML = "Option 4: "
+        let wrongAnswerType3 = document.createElement("input");
+
+        inputMulChoice.appendChild(rightAnswerLabel);
+        inputMulChoice.appendChild(rightAnswerType);
+
+        inputMulChoice.appendChild(wrongAnswerLabel1);
+        inputMulChoice.appendChild(wrongAnswerType1);
+
+        inputMulChoice.appendChild(wrongAnswerLabel2);
+        inputMulChoice.appendChild(wrongAnswerType2);
+
+        inputMulChoice.appendChild(wrongAnswerLabel3);
+        inputMulChoice.appendChild(wrongAnswerType3);
+
+        d.appendChild(inputMulChoice);
+    })
 });
