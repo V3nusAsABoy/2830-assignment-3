@@ -297,13 +297,6 @@ document.getElementById("new").addEventListener("click", function (){
         submitfitb.innerHTML = "generate question";
 
         submitfitb.addEventListener("click", function () {
-            if(n.value && answerType.value){
-                q = new fillInTheBlank(n.value, answerType.value);
-                questions = questions.concat(q);
-                d.style.display = "none";
-            } else {
-                alert("Please fill in all input fields before generating a question.")
-            }
         });
 
         inputfitb.appendChild(answerLabel);
