@@ -297,6 +297,21 @@ document.getElementById("new").addEventListener("click", function (){
         submitfitb.innerHTML = "generate question";
 
         submitfitb.addEventListener("click", function () {
+            if(n.value){
+                if(n.value.contains("_")){
+                    if(rightAnswer.value){
+                        
+                    } else {
+
+                    }
+                } else if (rightAnswer.value){
+
+                } else {
+
+                }
+            } else {
+
+            }
         });
 
         inputfitb.appendChild(answerLabel);
