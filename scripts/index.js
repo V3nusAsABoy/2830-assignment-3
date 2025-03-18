@@ -297,20 +297,16 @@ document.getElementById("new").addEventListener("click", function (){
         submitfitb.innerHTML = "generate question";
 
         submitfitb.addEventListener("click", function () {
-            if(n.value){
-                if(n.value.contains("_")){
-                    if(rightAnswer.value){
-                        
-                    } else {
-
-                    }
-                } else if (rightAnswer.value){
-
+            if(n.value && answerType.value){
+                if(n.value.includes("_")){
+                    q = new fillInTheBlank(n.value, answerType.value);
+                    questions = questions.concat(q);
+                       d.style.display = "none";
                 } else {
-
+                    alert("The question must include a _ since it's a fill in the blank question.");
                 }
             } else {
-
+                alert("Please fill in the input fields before generating a question.");
             }
         });
 
