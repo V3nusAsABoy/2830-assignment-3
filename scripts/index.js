@@ -198,9 +198,14 @@ document.getElementById("new").addEventListener("click", function (){
         submitMulChoice.innerHTML = "generate question";
 
         submitMulChoice.addEventListener("click", function () {
-            q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value]);
-            questions = questions.concat(q);
-            d.style.display = "none";
+            if(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value){
+                q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value]);
+                questions = questions.concat(q);
+                d.style.display = "none";
+            }
+            else{
+                alert("Please fill in all input fields before generating a question.");
+            }
         });
 
         inputMulChoice.appendChild(rightAnswerLabel);
@@ -252,15 +257,21 @@ document.getElementById("new").addEventListener("click", function (){
         });
 
         submittf.addEventListener("click", function () {
-            if(trueButton.classList.contains("selected")){
-                q = new trueFalse(n.value, true);
-                questions = questions.concat(q);
-                d.style.display = "none";
+            if(n.value){
+                if(trueButton.classList.contains("selected")){
+                    q = new trueFalse(n.value, true);
+                    questions = questions.concat(q);
+                    d.style.display = "none";
 
-            } else if(falseButton.classList.contains("selected")) {
-                q = new trueFalse(n.value, false);
-                questions = questions.concat(q);
-                d.style.display = "none";
+                } else if(falseButton.classList.contains("selected")) {
+                    q = new trueFalse(n.value, false);
+                    questions = questions.concat(q);
+                    d.style.display = "none";
+                } else {
+                    alert("Please indicate whether the question is true or false.");
+                }
+            } else {
+                alert("Please fill in the input field before generating a question.");
             }
         });
 
@@ -286,9 +297,13 @@ document.getElementById("new").addEventListener("click", function (){
         submitfitb.innerHTML = "generate question";
 
         submitfitb.addEventListener("click", function () {
-            q = new fillInTheBlank(n.value, answerType.value);
-            questions = questions.concat(q);
-            d.style.display = "none";
+            if(n.value && answerType.value){
+                q = new fillInTheBlank(n.value, answerType.value);
+                questions = questions.concat(q);
+                d.style.display = "none";
+            } else {
+                alert("Please fill in all input fields before generating a question.")
+            }
         });
 
         inputfitb.appendChild(answerLabel);
