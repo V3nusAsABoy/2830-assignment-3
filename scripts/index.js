@@ -14,6 +14,8 @@ class multipleChoice {
         document.getElementById("option2").innerHTML = this.answers[1];
         document.getElementById("option3").innerHTML = this.answers[2];
         document.getElementById("option4").innerHTML = this.answers[3];
+        document.getElementById("option1").style.display = "block";
+        document.getElementById("option2").style.display = "block";
         document.getElementById("option3").style.display = "block";
         document.getElementById("option4").style.display = "block";
         document.getElementById("textInput").style.display = "none";
@@ -35,6 +37,8 @@ class trueFalse{
         document.getElementById("Question").innerHTML = this.question;
         document.getElementById("option1").innerHTML = "True";
         document.getElementById("option2").innerHTML = "False";
+        document.getElementById("option1").style.display = "block";
+        document.getElementById("option2").style.display = "block";
         document.getElementById("option3").style.display = "none";
         document.getElementById("option4").style.display = "none";
         document.getElementById("textInput").style.display = "none";
@@ -316,4 +320,11 @@ document.getElementById("new").addEventListener("click", function (){
 
         d.appendChild(inputfitb);
     })
+});
+
+document.getElementById("start").addEventListener("click", function() {
+    document.getElementById("quizMaker").style.display = "none";
+    shuffle(questions);
+    document.getElementById("quiz").style.display = "block";
+    questions[0].generateQuestion();
 });
