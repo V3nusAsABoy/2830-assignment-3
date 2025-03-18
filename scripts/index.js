@@ -323,8 +323,12 @@ document.getElementById("new").addEventListener("click", function (){
 });
 
 document.getElementById("start").addEventListener("click", function() {
-    document.getElementById("quizMaker").style.display = "none";
-    shuffle(questions);
-    document.getElementById("quiz").style.display = "block";
-    questions[0].generateQuestion();
+    if(questions.length > 0){
+        document.getElementById("quizMaker").style.display = "none";
+        shuffle(questions);
+        document.getElementById("quiz").style.display = "block";
+        questions[0].generateQuestion();
+    } else {
+        alert("You have not created any questions.");
+    }
 });
