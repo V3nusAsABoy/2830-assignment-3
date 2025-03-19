@@ -254,6 +254,43 @@ document.getElementById("new").addEventListener("click", function (){
 
         let submittf = document.createElement("button");
         submittf.innerHTML = "generate question";
+        let edittf = document.createElement("button");
+        let deletetf = document.createElement("button");
+        edittf.innerHTML = "edit";
+        deletetf.innerHTML = "delete";
+
+        edittf.addEventListener("click", function() {
+            d.style.display = "block";
+            submittf.style.display = "none";
+            edittf.style.display = "none";
+            let saveChangestf = document.createElement("button");
+            saveChangestf.innerHTML = "save changes";
+            saveChangestf.addEventListener("click", function(){
+                for(let i = 0; i < questions.length; i++){
+                    if(questions[i].id == dParent.className){
+                        if(trueButton.classList.contains("selected")){
+                            q = new trueFalse(n.value, true, qNum);
+                            questions[i] = q;
+                            d.style.display = "none";
+                            edittf.style.display = "block";
+                            d.removeChild(saveChangestf);
+        
+                        } else if(falseButton.classList.contains("selected")) {
+                            q = new trueFalse(n.value, false, qNum);
+                            questions[i] = q;
+                            d.style.display = "none";
+                            edittf.style.display = "block";
+                            d.removeChild(saveChangestf);
+                        } else {
+                            alert("Please indicate whether the question is true or false.");
+                        }
+                    } else {
+                        alert("Please fill in the input field before generating a question.");
+                    }
+                }
+            });
+            d.appendChild(saveChangestf);
+        });
 
         trueButton.addEventListener("click", function () {
             trueButton.classList.add("selected");
@@ -278,6 +315,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questionTitle = document.createElement("h2");
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
+                    dParent.appendChild(edittf);
 
                 } else if(falseButton.classList.contains("selected")) {
                     q = new trueFalse(n.value, false, qNum);
@@ -286,6 +324,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questionTitle = document.createElement("h2");
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
+                    dParent.appendChild(edittf);
                 } else {
                     alert("Please indicate whether the question is true or false.");
                 }
