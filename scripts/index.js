@@ -387,13 +387,21 @@ document.getElementById("new").addEventListener("click", function (){
             let saveChangesfitb = document.createElement("button");
             saveChangesfitb.innerHTML = "save changes";
             saveChangesfitb.addEventListener("click", function(){
-                for(let i = 0; i < questions.length; i++){
-                    if(questions[i].id == dParent.className){
-                        questions[i] = new fillInTheBlank(n.value, answerType.value, dParent.className);
-                        d.style.display = "none";
-                        editfitb.style.display = "block";
-                        d.removeChild(saveChangesfitb);
+                if(n.value && answerType.value){
+                    if(n.value.includes("_")){
+                        for(let i = 0; i < questions.length; i++){
+                            if(questions[i].id == dParent.className){
+                                questions[i] = new fillInTheBlank(n.value, answerType.value, dParent.className);
+                                d.style.display = "none";
+                                editfitb.style.display = "block";
+                                d.removeChild(saveChangesfitb);
+                            }
+                        }
+                    } else {
+                        alert("The question must include a _ since it's a fill in the blank question.");
                     }
+                } else {
+                    alert("Please fill in the input fields before generating a question.");
                 }
             });
             d.appendChild(saveChangesfitb);
