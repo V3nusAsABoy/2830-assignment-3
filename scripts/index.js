@@ -1,9 +1,10 @@
 class multipleChoice {
-    constructor(question, rightAnswer, wrongAnswers) {
+    constructor(question, rightAnswer, wrongAnswers, id) {
         this.question = question;
         this.rightAnswer = rightAnswer;
         this.wrongAnswers = wrongAnswers;
         this.answers = rightAnswer.concat(wrongAnswers);
+        this.id = id;
         this.selectedAnswer;
     }
 
@@ -23,7 +24,7 @@ class multipleChoice {
 }
 
 class trueFalse{
-    constructor(question, tf){
+    constructor(question, tf, id){
         this.question = question;
         if(tf == true){
             this.rightAnswer = "True";
@@ -31,6 +32,7 @@ class trueFalse{
             this.rightAnswer = "False";
         }
         this.selectedAnswer;
+        this.id = id;
     }
 
     generateQuestion(){
@@ -46,10 +48,11 @@ class trueFalse{
 }
 
 class fillInTheBlank{
-    constructor(question, rightAnswer){
+    constructor(question, rightAnswer, id){
         this.question = question;
         this.rightAnswer = rightAnswer;
         this.selectedAnswer;
+        this.id = id;
     }
 
     generateQuestion(){
@@ -153,13 +156,15 @@ function displayResults(){
 
 document.getElementById("new").addEventListener("click", function (){
     qNum++;
+    let dParent = document.createElement("div");
     let d = document.createElement("div");
     let l1 = document.createElement("label");
     let n = document.createElement("input");
 
     l1.innerHTML = "Question: ";
     
-    document.getElementById("quizMaker").appendChild(d);
+    document.getElementById("quizMaker").appendChild(dParent);
+    dParent.appendChild(d);
     d.appendChild(l1);
     d.appendChild(n);
 
@@ -203,9 +208,12 @@ document.getElementById("new").addEventListener("click", function (){
 
         submitMulChoice.addEventListener("click", function () {
             if(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value){
-                q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value]);
+                q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value], qNum);
                 questions = questions.concat(q);
                 d.style.display = "none";
+                questionTitle = document.createElement("h2");
+                questionTitle.innerHTML = n.value;
+                qParent.appendChild(questionTitle);
             }
             else{
                 alert("Please fill in all input fields before generating a question.");
@@ -263,14 +271,20 @@ document.getElementById("new").addEventListener("click", function (){
         submittf.addEventListener("click", function () {
             if(n.value){
                 if(trueButton.classList.contains("selected")){
-                    q = new trueFalse(n.value, true);
+                    q = new trueFalse(n.value, true, qNum);
                     questions = questions.concat(q);
                     d.style.display = "none";
+                    questionTitle = document.createElement("h2");
+                    questionTitle.innerHTML = n.value;
+                    dParent.appendChild(questionTitle);
 
                 } else if(falseButton.classList.contains("selected")) {
-                    q = new trueFalse(n.value, false);
+                    q = new trueFalse(n.value, false, qNum);
                     questions = questions.concat(q);
                     d.style.display = "none";
+                    questionTitle = document.createElement("h2");
+                    questionTitle.innerHTML = n.value;
+                    dParent.appendChild(questionTitle);
                 } else {
                     alert("Please indicate whether the question is true or false.");
                 }
@@ -300,11 +314,40 @@ document.getElementById("new").addEventListener("click", function (){
         let submitfitb = document.createElement("button");
         submitfitb.innerHTML = "generate question";
 
+        let editfitb = document.createElement("button");
+        let deletefitb = document.createElement("button");
+        editfitb.innerHTML = "edit";
+        deletefitb.innerHTML = "delete";
+
+        editfitb.addEventListener("click", function() {
+            d.style.display = "block";
+            submitfitb.style.display = "none";
+            editfitb.style.display = "none";
+            let saveChangesfitb = document.createElement("button");
+            saveChangesfitb.innerHTML = "save changes";
+            saveChangesfitb.addEventListener("click", function(){
+                for(let i = 0; i < questions.length; i++){
+                    if(questions[i].id == qNum){
+                        questions[i] = new fillInTheBlank(n.value, answerType.value, qNum);
+                        d.style.display = "none";
+                        editfitb.style.display = "block";
+                        d.removeChild(saveChangesfitb);
+                    }
+                }
+            });
+            d.appendChild(saveChangesfitb);
+        });
+
         submitfitb.addEventListener("click", function () {
             if(n.value && answerType.value){
                 if(n.value.includes("_")){
-                    q = new fillInTheBlank(n.value, answerType.value);
+                    q = new fillInTheBlank(n.value, answerType.value, qNum);
                     questions = questions.concat(q);
+                    d.style.display = "none";
+                    questionTitle = document.createElement("h2");
+                    questionTitle.innerHTML = n.value;
+                    dParent.appendChild(questionTitle);
+                    dParent.appendChild(editfitb);
                 } else {
                     alert("The question must include a _ since it's a fill in the blank question.");
                 }
