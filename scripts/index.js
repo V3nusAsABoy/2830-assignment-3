@@ -157,6 +157,7 @@ function displayResults(){
 document.getElementById("new").addEventListener("click", function (){
     qNum++;
     let dParent = document.createElement("div");
+    dParent.classList.add(qNum);
     let d = document.createElement("div");
     let l1 = document.createElement("label");
     let n = document.createElement("input");
@@ -208,7 +209,7 @@ document.getElementById("new").addEventListener("click", function (){
 
         submitMulChoice.addEventListener("click", function () {
             if(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value){
-                q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value], qNum);
+                q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value], dParent.className);
                 questions = questions.concat(q);
                 d.style.display = "none";
                 questionTitle = document.createElement("h2");
@@ -327,8 +328,8 @@ document.getElementById("new").addEventListener("click", function (){
             saveChangesfitb.innerHTML = "save changes";
             saveChangesfitb.addEventListener("click", function(){
                 for(let i = 0; i < questions.length; i++){
-                    if(questions[i].id == qNum){
-                        questions[i] = new fillInTheBlank(n.value, answerType.value, qNum);
+                    if(questions[i].id == dParent.className){
+                        questions[i] = new fillInTheBlank(n.value, answerType.value, dParent.className);
                         d.style.display = "none";
                         editfitb.style.display = "block";
                         d.removeChild(saveChangesfitb);
@@ -341,7 +342,7 @@ document.getElementById("new").addEventListener("click", function (){
         submitfitb.addEventListener("click", function () {
             if(n.value && answerType.value){
                 if(n.value.includes("_")){
-                    q = new fillInTheBlank(n.value, answerType.value, qNum);
+                    q = new fillInTheBlank(n.value, answerType.value, dParent.className);
                     questions = questions.concat(q);
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
@@ -369,6 +370,7 @@ document.getElementById("start").addEventListener("click", function() {
         document.getElementById("quizMaker").style.display = "none";
         shuffle(questions);
         document.getElementById("quiz").style.display = "block";
+        document.getElementById("QuestionNum").innerHTML = `Question 1 out of ${questions.length}`;
         questions[0].generateQuestion();
     } else {
         alert("You have not created any questions.");
