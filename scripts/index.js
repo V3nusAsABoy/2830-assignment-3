@@ -207,6 +207,30 @@ document.getElementById("new").addEventListener("click", function (){
         let submitMulChoice = document.createElement("button");
         submitMulChoice.innerHTML = "generate question";
 
+        let editMulChoice = document.createElement("button");
+        let deleteMulChoice = document.createElement("button");
+        editMulChoice.innerHTML = "edit";
+        deleteMulChoice.innerHTML = "delete";
+
+        editMulChoice.addEventListener("click", function() {
+            d.style.display = "block";
+            submitMulChoice.style.display = "none";
+            editMulChoice.style.display = "none";
+            let saveChangesMulChoice = document.createElement("button");
+            saveChangesMulChoice.innerHTML = "save changes";
+            saveChangesMulChoice.addEventListener("click", function(){
+                for(let i = 0; i < questions.length; i++){
+                    if(questions[i].id == dParent.className){
+                        questions[i] = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value], dParent.className);
+                        d.style.display = "none";
+                        editMulChoice.style.display = "block";
+                        d.removeChild(saveChangesMulChoice);
+                    }
+                }
+            });
+            d.appendChild(saveChangesMulChoice);
+        });
+
         submitMulChoice.addEventListener("click", function () {
             if(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value){
                 q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value], dParent.className);
@@ -214,7 +238,8 @@ document.getElementById("new").addEventListener("click", function (){
                 d.style.display = "none";
                 questionTitle = document.createElement("h2");
                 questionTitle.innerHTML = n.value;
-                qParent.appendChild(questionTitle);
+                dParent.appendChild(questionTitle);
+                dParent.appendChild(editMulChoice);
             }
             else{
                 alert("Please fill in all input fields before generating a question.");
@@ -269,23 +294,19 @@ document.getElementById("new").addEventListener("click", function (){
                 for(let i = 0; i < questions.length; i++){
                     if(questions[i].id == dParent.className){
                         if(trueButton.classList.contains("selected")){
-                            q = new trueFalse(n.value, true, qNum);
-                            questions[i] = q;
+                            questions[i] = new trueFalse(n.value, true, qNum);;
                             d.style.display = "none";
                             edittf.style.display = "block";
                             d.removeChild(saveChangestf);
         
                         } else if(falseButton.classList.contains("selected")) {
-                            q = new trueFalse(n.value, false, qNum);
-                            questions[i] = q;
+                            questions[i] = new trueFalse(n.value, false, qNum);
                             d.style.display = "none";
                             edittf.style.display = "block";
                             d.removeChild(saveChangestf);
                         } else {
                             alert("Please indicate whether the question is true or false.");
                         }
-                    } else {
-                        alert("Please fill in the input field before generating a question.");
                     }
                 }
             });
