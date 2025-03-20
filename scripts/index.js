@@ -559,3 +559,19 @@ document.getElementById("start").addEventListener("click", function() {
 document.getElementById("privacy").addEventListener("click", function(){
     window.open("../privacypolicy.html");
 })
+
+function parseCSV(csvData) {
+    const questionsImported = [];
+    const lines = csvData.split("\n");
+
+    for (let line of lines) {
+        line = line.trim();
+        if (line) {
+            const columns = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            const adjustedColumns = columns.map(column => column.replace(/^"|"$/g, ""));
+            rows.push(adjustedColumns);
+        }
+    }
+
+    return rows;
+}
