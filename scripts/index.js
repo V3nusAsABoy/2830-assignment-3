@@ -532,3 +532,7 @@ document.getElementById("start").addEventListener("click", function() {
         alert("You have not created any questions.");
     }
 });
+
+document.getElementById("privacy").addEventListener("click", function(){
+    window.open("../privacypolicy.html");
+})
