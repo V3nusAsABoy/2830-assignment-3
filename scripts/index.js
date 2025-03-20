@@ -199,6 +199,7 @@ document.getElementById("new").addEventListener("click", function (){
     let d = document.createElement("div");
     let l1 = document.createElement("label");
     let n = document.createElement("input");
+    n.setAttribute("id", `n${qNum}`);
 
     l1.innerHTML = "Question: ";
     
@@ -209,8 +210,11 @@ document.getElementById("new").addEventListener("click", function (){
 
     let mode = document.createElement("div");
     let mulChoice = document.createElement("button");
+    mulChoice.setAttribute("id", `mulChoice${qNum}`);
     let tf = document.createElement("button");
+    tf.setAttribute("id", `tf${qNum}`);
     let fitb = document.createElement("button");
+    fitb.setAttribute("id", `fitb${qNum}`);
     let deletee = document.createElement("button");
     let undo = document.createElement("button");
 
@@ -245,20 +249,25 @@ document.getElementById("new").addEventListener("click", function (){
         let rightAnswerLabel = document.createElement("label");
         rightAnswerLabel.innerHTML = "Correct Answer: "
         let rightAnswerType = document.createElement("input");
+        rightAnswerType.setAttribute("id", `right${qNum}`);
 
         let wrongAnswerLabel1 = document.createElement("label");
         wrongAnswerLabel1.innerHTML = "Option 2: "
         let wrongAnswerType1 = document.createElement("input");
+        wrongAnswerType1.setAttribute("id", `wrong1${qNum}`);
 
         let wrongAnswerLabel2 = document.createElement("label");
         wrongAnswerLabel2.innerHTML = "Option 3: "
         let wrongAnswerType2 = document.createElement("input");
+        wrongAnswerType2.setAttribute("id", `wrong2${qNum}`);
 
         let wrongAnswerLabel3 = document.createElement("label");
         wrongAnswerLabel3.innerHTML = "Option 4: "
         let wrongAnswerType3 = document.createElement("input");
+        wrongAnswerType3.setAttribute("id",`wrong3${qNum}`);
 
         let submitMulChoice = document.createElement("button");
+        submitMulChoice.setAttribute("id", `submit${qNum}`);
         submitMulChoice.innerHTML = "generate question";
 
         let editMulChoice = document.createElement("button");
@@ -334,12 +343,15 @@ document.getElementById("new").addEventListener("click", function (){
         answerLabel.innerHTML = "Answer: ";
 
         let trueButton = document.createElement("button");
-        trueButton.innerHTML = "True"
+        trueButton.setAttribute("id", `true${qNum}`);
+        trueButton.innerHTML = "True";
 
         let falseButton = document.createElement("button");
-        falseButton.innerHTML = "False"
+        falseButton.setAttribute("id", `false${qNum}`);
+        falseButton.innerHTML = "False";
 
         let submittf = document.createElement("button");
+        submittf.setAttribute("id", `submit${qNum}`);
         submittf.innerHTML = "generate question";
         let edittf = document.createElement("button");
         edittf.innerHTML = "edit";
@@ -442,8 +454,10 @@ document.getElementById("new").addEventListener("click", function (){
         answerLabel.innerHTML = "Answer: ";
 
         let answerType = document.createElement("input");
+        answerType.setAttribute("id", `right${qNum}`);
 
         let submitfitb = document.createElement("button");
+        submitfitb.setAttribute("id", `submit${qNum}`);
         submitfitb.innerHTML = "generate question";
 
         let editfitb = document.createElement("button");
@@ -523,7 +537,7 @@ document.getElementById("start").addEventListener("click", function() {
             document.getElementById("next").click();
             }
         });
-    
+        
         document.body.addEventListener("keypress", function(event) {
             if (event.key === "1") {
             event.preventDefault();
@@ -582,8 +596,33 @@ document.getElementById("csvFileInput").addEventListener("change", function (eve
         reader.onload = function (e) {
             const csvData = e.target.result;
             const rows = parseCSV(csvData);
-            console.log(rows);
+            makeQuizFromCSV(rows);
         };
         reader.readAsText(file);
     }
 });
+
+function makeQuizFromCSV(importedQs){
+    for(let i = 1; i < importedQs.length; i++){
+        document.getElementById("new").click();
+        document.getElementById(`n${qNum}`).value = importedQs[i][0];
+        if(importedQs[i][1] == "Multiple choice"){
+            document.getElementById(`mulChoice${qNum}`).click();
+            document.getElementById(`right${qNum}`).value = importedQs[i][2];
+            document.getElementById(`wrong1${qNum}`).value = importedQs[i][3];
+            document.getElementById(`wrong2${qNum}`).value = importedQs[i][4];
+            document.getElementById(`wrong3${qNum}`).value = importedQs[i][5];
+        } else if(importedQs[i][1] == "Tf"){
+            document.getElementById(`tf${qNum}`).click();
+            if(importedQs[i][2] == "true"){
+                document.getElementById(`true${qNum}`).click();
+            } else {
+                document.getElementById(`false${qNum}`).click();
+            }
+        } else{
+            document.getElementById(`fitb${qNum}`).click();
+            document.getElementById(`right${qNum}`).value = importedQs[i][2];
+        }
+        document.getElementById(`submit${qNum}`).click();
+    }
+}
