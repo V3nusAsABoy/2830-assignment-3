@@ -155,6 +155,23 @@ function displayResults(){
             results.appendChild(c);
         }
     }
+
+    let restart = document.createElement("button");
+    restart.innerHTML = "Start over";
+
+    restart.addEventListener("click", function() {
+        document.body.removeChild(results);
+        document.getElementById("quiz").style.display = "block";
+        shuffle(questions);
+        document.getElementById("quiz").style.display = "block";
+        document.getElementById("QuestionNum").innerHTML = `Question 1 out of ${questions.length}`;
+        current = 0;
+        score = 0;
+        questions[0].generateQuestion();      
+    });
+
+    results.appendChild(restart);
+
     document.body.appendChild(results);
 }
 
