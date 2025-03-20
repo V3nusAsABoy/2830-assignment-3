@@ -351,14 +351,16 @@ document.getElementById("new").addEventListener("click", function (){
                 for(let i = 0; i < questions.length; i++){
                     if(questions[i].id == dParent.className){
                         if(trueButton.classList.contains("selected")){
-                            questions[i] = new trueFalse(n.value, true, qNum);;
+                            nameOfQuestion = escapeInput(n.value);
+                            questions[i] = new trueFalse(nameOfQuestion, true, qNum);;
                             d.style.display = "none";
                             edittf.style.display = "block";
                             deletee.style.display = "block";
                             d.removeChild(saveChangestf);
         
                         } else if(falseButton.classList.contains("selected")) {
-                            questions[i] = new trueFalse(n.value, false, qNum);
+                            nameOfQuestion = escapeInput(n.value);
+                            questions[i] = new trueFalse(nameOfQuestion, false, qNum);
                             d.style.display = "none";
                             edittf.style.display = "block";
                             deletee.style.display = "block";
@@ -389,7 +391,8 @@ document.getElementById("new").addEventListener("click", function (){
         submittf.addEventListener("click", function () {
             if(n.value){
                 if(trueButton.classList.contains("selected")){
-                    q = new trueFalse(n.value, true, qNum);
+                    nameOfQuestion = escapeInput(n.value);
+                    q = new trueFalse(nameOfQuestion, true, qNum);
                     questions = questions.concat(q);
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
@@ -399,7 +402,8 @@ document.getElementById("new").addEventListener("click", function (){
                     dParent.appendChild(deletee);
 
                 } else if(falseButton.classList.contains("selected")) {
-                    q = new trueFalse(n.value, false, qNum);
+                    nameOfQuestion = escapeInput(n.value);
+                    q = new trueFalse(nameOfQuestion, false, qNum);
                     questions = questions.concat(q);
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
