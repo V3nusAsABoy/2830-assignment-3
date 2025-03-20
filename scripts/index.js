@@ -121,7 +121,8 @@ document.getElementById("next").addEventListener("click", function () {
             options[i].classList.remove("selected");
             i = options.length;
         } else if (options[i].id == "textInput"){
-            questions[current].selectedAnswer = options[i].value;
+            userInput = escapeInput(options[i].value);
+            questions[current].selectedAnswer = userInput;
             if (questions[current].selectedAnswer == questions[current].rightAnswer) {
                 score++;
             }
@@ -451,7 +452,9 @@ document.getElementById("new").addEventListener("click", function (){
                     if(n.value.includes("_")){
                         for(let i = 0; i < questions.length; i++){
                             if(questions[i].id == dParent.className){
-                                questions[i] = new fillInTheBlank(n.value, answerType.value, dParent.className);
+                                nameOfQuestion = escapeInput(n.value);
+                                answerToQuestion = escapeInput(answerType.value);
+                                questions[i] = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
                                 d.style.display = "none";
                                 editfitb.style.display = "block";
                                 deletee.style.display = "block";
@@ -471,7 +474,9 @@ document.getElementById("new").addEventListener("click", function (){
         submitfitb.addEventListener("click", function () {
             if(n.value && answerType.value){
                 if(n.value.includes("_")){
-                    q = new fillInTheBlank(n.value, answerType.value, dParent.className);
+                    nameOfQuestion = escapeInput(n.value);
+                    answerToQuestion = escapeInput(answerType.value);
+                    q = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
                     questions = questions.concat(q);
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
