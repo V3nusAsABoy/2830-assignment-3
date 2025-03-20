@@ -532,35 +532,35 @@ document.getElementById("start").addEventListener("click", function() {
         document.getElementById("QuestionNum").innerHTML = `Question 1 out of ${questions.length}`;
         questions[0].generateQuestion();      
         document.body.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
+            if (event.key === "Enter" && document.getElementById("next").style.display != "none") {
             event.preventDefault();
             document.getElementById("next").click();
             }
         });
         
         document.body.addEventListener("keypress", function(event) {
-            if (event.key === "1") {
+            if (event.key === "1" && document.getElementById("option1").style.display === "block") {
             event.preventDefault();
             document.getElementById("option1").click();
             }
         });
     
         document.body.addEventListener("keypress", function(event) {
-            if (event.key === "2") {
+            if (event.key === "2" && document.getElementById("option2").style.display === "block") {
             event.preventDefault();
             document.getElementById("option2").click();
             }
         });
     
         document.body.addEventListener("keypress", function(event) {
-            if (event.key === "3") {
+            if (event.key === "3" && document.getElementById("option3").style.display === "block") {
             event.preventDefault();
             document.getElementById("option3").click();
             }
         });
     
         document.body.addEventListener("keypress", function(event) {
-            if (event.key === "4") {
+            if (event.key === "4" && document.getElementById("option4").style.display === "block") {
             event.preventDefault();
             document.getElementById("option4").click();
             }
