@@ -103,43 +103,6 @@ let finalScore;
 
 var input = document.getElementById("myInput");
 
-if(document.getElementById("quiz").style.display == "block"){
-    document.body.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("next").click();
-        }
-    });
-
-    document.body.addEventListener("keypress", function(event) {
-        if (event.key === "1") {
-        event.preventDefault();
-        document.getElementById("option1").click();
-        }
-    });
-
-    document.body.addEventListener("keypress", function(event) {
-        if (event.key === "2") {
-        event.preventDefault();
-        document.getElementById("option2").click();
-        }
-    });
-
-    document.body.addEventListener("keypress", function(event) {
-        if (event.key === "3") {
-        event.preventDefault();
-        document.getElementById("option3").click();
-        }
-    });
-
-    document.body.addEventListener("keypress", function(event) {
-        if (event.key === "4") {
-        event.preventDefault();
-        document.getElementById("option4").click();
-        }
-    });
-}
-
 document.getElementById("next").addEventListener("click", function () {
     for (let i = 0; i < options.length; i++) {
         if (options[i].classList.contains("selected")) {
@@ -493,6 +456,40 @@ document.getElementById("start").addEventListener("click", function() {
         document.getElementById("quiz").style.display = "block";
         document.getElementById("QuestionNum").innerHTML = `Question 1 out of ${questions.length}`;
         questions[0].generateQuestion();
+        document.body.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("next").click();
+            }
+        });
+    
+        document.body.addEventListener("keypress", function(event) {
+            if (event.key === "1") {
+            event.preventDefault();
+            document.getElementById("option1").click();
+            }
+        });
+    
+        document.body.addEventListener("keypress", function(event) {
+            if (event.key === "2") {
+            event.preventDefault();
+            document.getElementById("option2").click();
+            }
+        });
+    
+        document.body.addEventListener("keypress", function(event) {
+            if (event.key === "3") {
+            event.preventDefault();
+            document.getElementById("option3").click();
+            }
+        });
+    
+        document.body.addEventListener("keypress", function(event) {
+            if (event.key === "4") {
+            event.preventDefault();
+            document.getElementById("option4").click();
+            }
+        });
     } else {
         alert("You have not created any questions.");
     }
