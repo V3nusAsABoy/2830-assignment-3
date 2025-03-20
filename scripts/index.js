@@ -134,14 +134,15 @@ document.getElementById("next").addEventListener("click", function () {
 function displayResults(){
     document.getElementById("quiz").style.display = "none";
     document.getElementById("Question").innerHTML = `Final Score: ${score}/${questions.length}`;
+    results = document.createElement("div");
     for(let i = 0; i < questions.length; i++){
         if(questions[i].selectedAnswer == questions[i].rightAnswer){
             let q = document.createElement("h3");
             let c = document.createElement("p");
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
             c.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Correct)`;
-            document.body.appendChild(q);
-            document.body.appendChild(c);
+            results.appendChild(q);
+            results.appendChild(c);
         } else {
             let q = document.createElement("h3");
             let c = document.createElement("p");
@@ -149,11 +150,12 @@ function displayResults(){
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
             c.innerHTML = `Answer: ${questions[i].rightAnswer}`;
             iC.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Incorrect)`;
-            document.body.appendChild(q);
-            document.body.appendChild(iC);
-            document.body.appendChild(c);
+            results.appendChild(q);
+            results.appendChild(iC);
+            results.appendChild(c);
         }
     }
+    document.body.appendChild(results);
 }
 
 document.getElementById("new").addEventListener("click", function (){
@@ -455,7 +457,7 @@ document.getElementById("start").addEventListener("click", function() {
         shuffle(questions);
         document.getElementById("quiz").style.display = "block";
         document.getElementById("QuestionNum").innerHTML = `Question 1 out of ${questions.length}`;
-        questions[0].generateQuestion();
+        questions[0].generateQuestion();      
         document.body.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
             event.preventDefault();
