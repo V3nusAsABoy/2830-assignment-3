@@ -203,16 +203,23 @@ document.getElementById("new").addEventListener("click", function (){
     let tf = document.createElement("button");
     let fitb = document.createElement("button");
     let deletee = document.createElement("button");
+    let undo = document.createElement("button");
 
     mulChoice.innerHTML = "Multiple Choice";
     tf.innerHTML = "True or false";
     fitb.innerHTML = "Fill in the blank";
     deletee.innerHTML = "delete";
+    undo.innerHTML = "undo";
 
     mode.appendChild(mulChoice);
     mode.appendChild(tf);
     mode.appendChild(fitb);
     d.appendChild(mode);
+    d.appendChild(undo);
+
+    undo.addEventListener("click", function(){
+        document.getElementById("quizMaker").removeChild(dParent);
+    });
 
     deletee.addEventListener("click", function(){
         for(let i = 0; i < questions.length; i++){
@@ -250,6 +257,7 @@ document.getElementById("new").addEventListener("click", function (){
 
         editMulChoice.addEventListener("click", function() {
             d.style.display = "block";
+            undo.style.display = "none";
             submitMulChoice.style.display = "none";
             editMulChoice.style.display = "none";
             deletee.style.display = "none";
@@ -323,6 +331,8 @@ document.getElementById("new").addEventListener("click", function (){
 
         edittf.addEventListener("click", function() {
             d.style.display = "block";
+            undo.style.display = "none";
+            undo.style.display = "none";
             submittf.style.display = "none";
             edittf.style.display = "none";
             deletee.style.display = "none";
@@ -422,6 +432,7 @@ document.getElementById("new").addEventListener("click", function (){
 
         editfitb.addEventListener("click", function() {
             d.style.display = "block";
+            undo.style.display = "none";
             submitfitb.style.display = "none";
             editfitb.style.display = "none";
             deletee.style.display = "none";
