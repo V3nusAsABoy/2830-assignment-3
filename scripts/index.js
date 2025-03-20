@@ -159,6 +159,9 @@ function displayResults(){
     let restart = document.createElement("button");
     restart.innerHTML = "Start over";
 
+    let newQuiz = document.createElement("button");
+    newQuiz.innerHTML = "Make new quiz";
+
     restart.addEventListener("click", function() {
         document.body.removeChild(results);
         document.getElementById("quiz").style.display = "block";
@@ -170,7 +173,12 @@ function displayResults(){
         questions[0].generateQuestion();      
     });
 
+    newQuiz.addEventListener("click", function(){
+        location.reload();
+    })
+
     results.appendChild(restart);
+    results.appendChild(newQuiz);
 
     document.body.appendChild(results);
 }
