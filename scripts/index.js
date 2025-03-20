@@ -95,6 +95,14 @@ function shuffle(array) {
     }
 }
 
+function escapeInput(input) {
+    return input.replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+}
+
 let questions = [];
 let current = 0;
 let score = 0;
