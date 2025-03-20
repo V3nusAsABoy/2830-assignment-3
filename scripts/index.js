@@ -275,7 +275,10 @@ document.getElementById("new").addEventListener("click", function (){
             saveChangesMulChoice.addEventListener("click", function(){
                 for(let i = 0; i < questions.length; i++){
                     if(questions[i].id == dParent.className){
-                        questions[i] = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value], dParent.className);
+                        nameOfQuestion = escapeInput(n.value);
+                        correctAns = [escapeInput(rightAnswerType.value)];
+                        wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
+                        questions[i] = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.className);
                         d.style.display = "none";
                         editMulChoice.style.display = "block";
                         deletee.style.display = "block";
@@ -288,7 +291,10 @@ document.getElementById("new").addEventListener("click", function (){
 
         submitMulChoice.addEventListener("click", function () {
             if(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value){
-                q = new multipleChoice(n.value, [rightAnswerType.value], [wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value], dParent.className);
+                nameOfQuestion = escapeInput(n.value);
+                correctAns = [escapeInput(rightAnswerType.value)];
+                wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
+                q = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.className);
                 questions = questions.concat(q);
                 d.style.display = "none";
                 questionTitle = document.createElement("h2");
