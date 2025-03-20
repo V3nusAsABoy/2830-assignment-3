@@ -569,9 +569,21 @@ function parseCSV(csvData) {
         if (line) {
             const columns = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             const adjustedColumns = columns.map(column => column.replace(/^"|"$/g, ""));
-            rows.push(adjustedColumns);
+            questionsImported.push(adjustedColumns);
         }
     }
-
-    return rows;
+    return questionsImported;
 }
+
+document.getElementById("csvFileInput").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const csvData = e.target.result;
+            const rows = parseCSV(csvData);
+            console.log(rows);
+        };
+        reader.readAsText(file);
+    }
+});
