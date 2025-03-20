@@ -101,6 +101,43 @@ let score = 0;
 let qNum = 0;
 let finalScore;
 
+var input = document.getElementById("myInput");
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("next").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "1") {
+      event.preventDefault();
+      document.getElementById("option1").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "2") {
+      event.preventDefault();
+      document.getElementById("option2").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "3") {
+      event.preventDefault();
+      document.getElementById("option3").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "4") {
+      event.preventDefault();
+      document.getElementById("option4").click();
+    }
+});
+
 document.getElementById("next").addEventListener("click", function () {
     for (let i = 0; i < options.length; i++) {
         if (options[i].classList.contains("selected")) {
