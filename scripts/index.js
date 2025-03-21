@@ -123,6 +123,41 @@ let score = 0;
 let qNum = 0;
 let finalScore;
 
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "Enter" && document.getElementById("next").style.display != "none") {
+    event.preventDefault();
+    document.getElementById("next").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "1" && document.getElementById("option1").style.display === "block") {
+    event.preventDefault();
+    document.getElementById("option1").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "2" && document.getElementById("option2").style.display === "block") {
+    event.preventDefault();
+    document.getElementById("option2").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "3" && document.getElementById("option3").style.display === "block") {
+    event.preventDefault();
+    document.getElementById("option3").click();
+    }
+});
+
+document.body.addEventListener("keypress", function(event) {
+    if (event.key === "4" && document.getElementById("option4").style.display === "block") {
+    event.preventDefault();
+    document.getElementById("option4").click();
+    }
+});
+
 var input = document.getElementById("myInput");
 
 document.getElementById("next").addEventListener("click", function () {
@@ -185,6 +220,9 @@ function displayResults(){
     let newQuiz = document.createElement("button");
     newQuiz.innerHTML = "Make new quiz";
 
+    let editQuiz = document.createElement("button");
+    editQuiz.innerHTML = "Edit quiz";
+
     restart.addEventListener("click", function() {
         document.body.removeChild(results);
         document.getElementById("quiz").style.display = "block";
@@ -198,9 +236,17 @@ function displayResults(){
 
     newQuiz.addEventListener("click", function(){
         location.reload();
-    })
+    });
+
+    editQuiz.addEventListener("click", function(){
+        document.body.removeChild(results);
+        document.getElementById("quizMaker").style.display = "block";
+        current = 0;
+        score = 0;
+    });
 
     results.appendChild(restart);
+    results.appendChild(editQuiz);
     results.appendChild(newQuiz);
 
     document.body.appendChild(results);
@@ -552,41 +598,7 @@ document.getElementById("start").addEventListener("click", function() {
         shuffle(questions);
         document.getElementById("quiz").style.display = "block";
         document.getElementById("QuestionNum").innerHTML = `Question 1 out of ${questions.length}`;
-        questions[0].generateQuestion();      
-        document.body.addEventListener("keypress", function(event) {
-            if (event.key === "Enter" && document.getElementById("next").style.display != "none") {
-            event.preventDefault();
-            document.getElementById("next").click();
-            }
-        });
-        
-        document.body.addEventListener("keypress", function(event) {
-            if (event.key === "1" && document.getElementById("option1").style.display === "block") {
-            event.preventDefault();
-            document.getElementById("option1").click();
-            }
-        });
-    
-        document.body.addEventListener("keypress", function(event) {
-            if (event.key === "2" && document.getElementById("option2").style.display === "block") {
-            event.preventDefault();
-            document.getElementById("option2").click();
-            }
-        });
-    
-        document.body.addEventListener("keypress", function(event) {
-            if (event.key === "3" && document.getElementById("option3").style.display === "block") {
-            event.preventDefault();
-            document.getElementById("option3").click();
-            }
-        });
-    
-        document.body.addEventListener("keypress", function(event) {
-            if (event.key === "4" && document.getElementById("option4").style.display === "block") {
-            event.preventDefault();
-            document.getElementById("option4").click();
-            }
-        });
+        questions[0].generateQuestion();
     } else {
         alert("You have not created any questions.");
     }
