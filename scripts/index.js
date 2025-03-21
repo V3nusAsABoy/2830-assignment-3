@@ -592,6 +592,10 @@ document.getElementById("privacy").addEventListener("click", function(){
     window.open("../privacypolicy.html");
 })
 
+document.getElementById("guide").addEventListener("click", function(){
+    window.open("../guide.html");
+})
+
 function parseCSV(csvData) {
     const questionsImported = [];
     const lines = csvData.split("\n");
@@ -668,7 +672,6 @@ function exportCSV(){
     let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     let url = URL.createObjectURL(blob);
 
-    // Create a hidden link and trigger the download
     let link = document.createElement("a");
     link.setAttribute("href", url);
     link.setAttribute("download", "questions.csv");
