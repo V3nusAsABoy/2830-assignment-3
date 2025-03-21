@@ -5,6 +5,7 @@ class multipleChoice {
         this.wrongAnswers = wrongAnswers;
         this.answers = rightAnswer.concat(wrongAnswers);
         this.id = id;
+        this.type = "Multiple Choice";
         this.selectedAnswer;
     }
 
@@ -32,6 +33,7 @@ class trueFalse{
             this.rightAnswer = "False";
         }
         this.selectedAnswer;
+        this.type = "True/False";
         this.id = id;
     }
 
@@ -52,6 +54,7 @@ class fillInTheBlank{
         this.question = question;
         this.rightAnswer = rightAnswer;
         this.selectedAnswer;
+        this.type = "Fill In The Blanks";
         this.id = id;
     }
 
@@ -102,6 +105,17 @@ function escapeInput(input) {
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
 }
+
+function reverseEscapeInput(input) {
+    if(typeof input === "string"){
+        return input.replace(/&amp;/g, "&")
+                    .replace(/&lt;/g, "<")
+                    .replace(/&gt;/g, ">")
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#039;/g, "'");
+    }
+}
+
 
 let questions = [];
 let current = 0;
@@ -370,7 +384,7 @@ document.getElementById("new").addEventListener("click", function (){
                     if(questions[i].id == dParent.className){
                         if(trueButton.classList.contains("selected")){
                             nameOfQuestion = escapeInput(n.value);
-                            questions[i] = new trueFalse(nameOfQuestion, true, qNum);;
+                            questions[i] = new trueFalse(nameOfQuestion, true, dParent.className);;
                             d.style.display = "none";
                             edittf.style.display = "block";
                             deletee.style.display = "block";
@@ -378,7 +392,7 @@ document.getElementById("new").addEventListener("click", function (){
         
                         } else if(falseButton.classList.contains("selected")) {
                             nameOfQuestion = escapeInput(n.value);
-                            questions[i] = new trueFalse(nameOfQuestion, false, qNum);
+                            questions[i] = new trueFalse(nameOfQuestion, false, dParent.className);
                             d.style.display = "none";
                             edittf.style.display = "block";
                             deletee.style.display = "block";
@@ -614,7 +628,7 @@ function makeQuizFromCSV(importedQs){
             document.getElementById(`wrong3${qNum}`).value = importedQs[i][5];
         } else if(importedQs[i][1] == "Tf"){
             document.getElementById(`tf${qNum}`).click();
-            if(importedQs[i][2] == "true"){
+            if(importedQs[i][2] == "TRUE"){
                 document.getElementById(`true${qNum}`).click();
             } else {
                 document.getElementById(`false${qNum}`).click();
@@ -625,4 +639,37 @@ function makeQuizFromCSV(importedQs){
         }
         document.getElementById(`submit${qNum}`).click();
     }
+}
+
+document.getElementById("export").addEventListener("click", function(){
+    if(questions.length == 0){
+        window.alert("You have not created any questions.")
+    } else {
+        exportCSV();
+    }
+});
+
+function exportCSV(){
+    toExport = [["Question", "Type", "Right Answer", "Wrong Answer 1", "Wrong Answer 2", "Wrong Answer 3"]];
+    for(let i = 0; i < questions.length; i++){
+        if(questions[i].type === "Multiple Choice"){
+            toExport.push([reverseEscapeInput(questions[i].question), "Multiple choice", reverseEscapeInput(questions[i].rightAnswer[0]), reverseEscapeInput(questions[i].wrongAnswers[0]), reverseEscapeInput(questions[i].wrongAnswers[1]), reverseEscapeInput(questions[i].wrongAnswers[2])]);
+        } else if(questions[i].type === "True/False"){
+            toExport.push([reverseEscapeInput(questions[i].question), "Tf", reverseEscapeInput(questions[i].rightAnswer)]);
+        } else {
+            toExport.push([reverseEscapeInput(questions[i].question), "Fitb", reverseEscapeInput(questions[i].rightAnswer)]);
+        }
+    }
+    let csvContent = toExport.map(e => e.join(",")).join("\n");
+    let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    let url = URL.createObjectURL(blob);
+
+    // Create a hidden link and trigger the download
+    let link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "questions.csv");
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
