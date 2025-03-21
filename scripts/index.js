@@ -302,7 +302,7 @@ document.getElementById("new").addEventListener("click", function (){
                         correctAns = [escapeInput(rightAnswerType.value)];
                         wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
                         questions[i] = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.className);
-                        questionTitle.innerHTML = n.value;
+                        document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                         d.style.display = "none";
                         editMulChoice.style.display = "block";
                         deletee.style.display = "block";
@@ -322,6 +322,7 @@ document.getElementById("new").addEventListener("click", function (){
                 questions = questions.concat(q);
                 d.style.display = "none";
                 questionTitle = document.createElement("h2");
+                questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                 questionTitle.innerHTML = n.value;
                 dParent.appendChild(questionTitle);
                 dParent.appendChild(editMulChoice);
@@ -386,7 +387,7 @@ document.getElementById("new").addEventListener("click", function (){
                         if(trueButton.classList.contains("selected")){
                             nameOfQuestion = escapeInput(n.value);
                             questions[i] = new trueFalse(nameOfQuestion, true, dParent.className);;
-                            questionTitle.innerHTML = n.value;
+                            document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                             d.style.display = "none";
                             edittf.style.display = "block";
                             deletee.style.display = "block";
@@ -395,7 +396,7 @@ document.getElementById("new").addEventListener("click", function (){
                         } else if(falseButton.classList.contains("selected")) {
                             nameOfQuestion = escapeInput(n.value);
                             questions[i] = new trueFalse(nameOfQuestion, false, dParent.className);
-                            questionTitle.innerHTML = n.value;
+                            document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                             d.style.display = "none";
                             edittf.style.display = "block";
                             deletee.style.display = "block";
@@ -431,6 +432,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questions = questions.concat(q);
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
+                    questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
                     dParent.appendChild(edittf);
@@ -442,6 +444,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questions = questions.concat(q);
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
+                    questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
                     dParent.appendChild(edittf);
@@ -496,7 +499,7 @@ document.getElementById("new").addEventListener("click", function (){
                                 nameOfQuestion = escapeInput(n.value);
                                 answerToQuestion = escapeInput(answerType.value);
                                 questions[i] = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
-                                questionTitle.innerHTML = n.value;
+                                document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                                 d.style.display = "none";
                                 editfitb.style.display = "block";
                                 deletee.style.display = "block";
@@ -522,6 +525,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questions = questions.concat(q);
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
+                    questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
                     dParent.appendChild(editfitb);
