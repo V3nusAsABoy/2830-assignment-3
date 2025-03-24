@@ -117,6 +117,27 @@ p{
     ". . . .";
  }
 
- .labelAndText{
+#QandA{
+    display:flex;
+    flex-direction: column;
+}
 
- }
+#QandA input{
+    width:99%;
+    height:2em;
+    margin:0;
+}
+
+.labelAndQuestion{
+    display:flex;
+    flex-direction: column;
+    background-color: gray;
+    align-items: center;
+    justify-items: end;
+    margin-bottom:1em;
+    border: 0.1em solid black;
+}
+
+.labelAndQuestion label{
+    color:white;
+}
