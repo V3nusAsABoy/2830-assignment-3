@@ -284,6 +284,7 @@ document.getElementById("new").addEventListener("click", function (){
     fitb.setAttribute("id", `fitb${qNum}`);
     let deletee = document.createElement("button");
     let undo = document.createElement("button");
+    undo.style.fontSize = "1.5em";
 
     mulChoice.innerHTML = "Multiple Choice";
     tf.innerHTML = "True or false";
@@ -390,6 +391,7 @@ document.getElementById("new").addEventListener("click", function (){
                 q = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.className);
                 questions = questions.concat(q);
                 d.style.display = "none";
+                undo.style.display = "none";
                 questionTitle = document.createElement("h2");
                 questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                 questionTitle.innerHTML = n.value;
@@ -496,6 +498,7 @@ document.getElementById("new").addEventListener("click", function (){
                     q = new trueFalse(nameOfQuestion, true, qNum);
                     questions = questions.concat(q);
                     d.style.display = "none";
+                    undo.style.display = "none";
                     questionTitle = document.createElement("h2");
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
@@ -508,6 +511,7 @@ document.getElementById("new").addEventListener("click", function (){
                     q = new trueFalse(nameOfQuestion, false, qNum);
                     questions = questions.concat(q);
                     d.style.display = "none";
+                    undo.style.display = "none";
                     questionTitle = document.createElement("h2");
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
@@ -588,6 +592,7 @@ document.getElementById("new").addEventListener("click", function (){
                     answerToQuestion = escapeInput(answerType.value);
                     q = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
                     questions = questions.concat(q);
+                    undo.style.display = "none";
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
