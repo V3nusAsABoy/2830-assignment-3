@@ -151,3 +151,18 @@ p{
     margin-right: 1em;
     margin-left:1em;
 }
+
+#tfAnswer{
+    display:flex;
+    flex-direction: row;
+    margin-left:auto;
+}
+
+#tfAnswer > button{
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+#tfAnswer > label{
+    margin-left:1em;
+}

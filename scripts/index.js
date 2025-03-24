@@ -434,6 +434,12 @@ document.getElementById("new").addEventListener("click", function (){
         falseButton.setAttribute("id", `false${qNum}`);
         falseButton.innerHTML = "False";
 
+        let answer = document.createElement("div");
+        answer.appendChild(answerLabel);
+        answer.appendChild(trueButton);
+        answer.appendChild(falseButton);
+        answer.setAttribute("id", "tfAnswer")
+
         let submittf = document.createElement("button");
         submittf.setAttribute("id", `submit${qNum}`);
         submittf.innerHTML = "generate question";
@@ -527,9 +533,7 @@ document.getElementById("new").addEventListener("click", function (){
             }
         });
 
-        inputtf.appendChild(answerLabel);
-        inputtf.appendChild(trueButton);
-        inputtf.appendChild(falseButton);
+        inputtf.appendChild(answer);
         inputtf.appendChild(submittf);
 
         d.appendChild(inputtf);
