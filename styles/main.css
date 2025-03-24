@@ -131,7 +131,7 @@ p{
 .labelAndQuestion{
     display:flex;
     flex-direction: column;
-    background-color: gray;
+    background-color: black;
     align-items: center;
     justify-items: end;
     margin-bottom:1em;

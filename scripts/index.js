@@ -544,6 +544,12 @@ document.getElementById("new").addEventListener("click", function (){
 
         let answerType = document.createElement("input");
         answerType.setAttribute("id", `right${qNum}`);
+        
+        let answer = document.createElement("div");
+        answer.setAttribute("class", "labelAndQuestion");
+
+        answer.appendChild(answerLabel);
+        answer.appendChild(answerType);
 
         let submitfitb = document.createElement("button");
         submitfitb.setAttribute("id", `submit${qNum}`);
@@ -608,8 +614,7 @@ document.getElementById("new").addEventListener("click", function (){
             }
         });
 
-        inputfitb.appendChild(answerLabel);
-        inputfitb.appendChild(answerType);
+        QandA.appendChild(answer);
         inputfitb.appendChild(submitfitb);
 
         d.appendChild(inputfitb);
