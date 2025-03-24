@@ -276,6 +276,7 @@ document.getElementById("new").addEventListener("click", function (){
     d.appendChild(QandA);
 
     let mode = document.createElement("div");
+    mode.setAttribute("id", "mode");
     let mulChoice = document.createElement("button");
     mulChoice.setAttribute("id", `mulChoice${qNum}`);
     let tf = document.createElement("button");
