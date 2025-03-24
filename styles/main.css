@@ -9,15 +9,24 @@ button{
     margin-bottom:0.5em;
 }
 
+#main button:hover{
+    color:rgb(140, 180, 255);
+}
+
+#csvFileInput{
+    font-size: 1.5em;
+    margin-left:10em;
+}
+
 #next{
     width:15em;
 }
 
 .selected{
-    box-shadow: 0 0 0.42em 0.16em green;
+    box-shadow: 0 0 0.42em 0.16em rgb(0, 89, 255);
 }
 
-h1,h2,p,button{
+h1,h2,p,button, #csvFileInput{
     font-family:  -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
