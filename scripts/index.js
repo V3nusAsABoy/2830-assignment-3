@@ -358,12 +358,17 @@ document.getElementById("new").addEventListener("click", function (){
         let editMulChoice = document.createElement("button");
         editMulChoice.innerHTML = "edit";
 
+        let editAndDelete = document.createElement("div");
+        editAndDelete.setAttribute("id", "editAndDelete");
+
+        editAndDelete.appendChild(editMulChoice);
+        editAndDelete.appendChild(deletee);
+
         editMulChoice.addEventListener("click", function() {
             d.style.display = "block";
             undo.style.display = "none";
             submitMulChoice.style.display = "none";
-            editMulChoice.style.display = "none";
-            deletee.style.display = "none";
+            editAndDelete.style.display = "none";
             let saveChangesMulChoice = document.createElement("button");
             saveChangesMulChoice.innerHTML = "save changes";
             saveChangesMulChoice.addEventListener("click", function(){
@@ -375,8 +380,7 @@ document.getElementById("new").addEventListener("click", function (){
                         questions[i] = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.className);
                         document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                         d.style.display = "none";
-                        editMulChoice.style.display = "block";
-                        deletee.style.display = "block";
+                        editAndDelete.style.display = "block";
                         d.removeChild(saveChangesMulChoice);
                     }
                 }
@@ -397,7 +401,7 @@ document.getElementById("new").addEventListener("click", function (){
                 questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                 questionTitle.innerHTML = n.value;
                 dParent.appendChild(questionTitle);
-                dParent.appendChild(editMulChoice);
+                dParent.appendChild(editAndDelete);
                 dParent.appendChild(deletee);
             }
             else{

@@ -30,8 +30,12 @@ h1,h2,p,button, #csvFileInput{
     font-family:  -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
+#Question{
+    text-align: center;
+}
+
 h1{
-    font-size: 4em;
+    font-size:3.5em;
 }
 
 h2{
@@ -39,7 +43,7 @@ h2{
 }
 
 p{
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 #main{
@@ -48,7 +52,7 @@ p{
     align-items: center;
     background-color: white;
     grid-area:main;
-    padding:8em;
+    padding: 1em 28em 8em 28em;
     border-radius:5em;
     border:solid 0.5em rgba(255, 119, 0, 0.526);
     box-shadow:1em 1em rgba(0, 255, 238, 0.784);
@@ -75,7 +79,7 @@ p{
     border-bottom:none;
     border-left:none;
     border-right:solid rgba(0, 0, 0, 0.324);
-    font-size: 1.2em;
+    font-size: 1em;
  }
 
  #quizMaker button{
@@ -83,7 +87,7 @@ p{
     color:white;
     height:fit-content;
     padding: 0.5em;
-    font-size:2em;
+    font-size:1.5em;
     width:10em;
  }
 
@@ -174,4 +178,9 @@ p{
 
 #tfAnswer > label{
     margin-left:1em;
+}
+
+#editAndDelete{
+    display:flex;
+    flex-direction: row;
 }
