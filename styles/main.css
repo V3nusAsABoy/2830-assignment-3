@@ -238,3 +238,11 @@ p{
     width:15em;
     font-size: 1.1em;
 }
+
+.privacyPolicy > h1, .privacyPolicy > p{
+    width: 35em;
+}
+
+.privacyPolicy > h1{
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+body{
+    background-color: rgb(0, 89, 255);
+    display:grid;
+    grid-template-columns: 0.5fr 2fr 2fr 0.5fr;
+    grid-template-rows: 2fr 2fr;
+    grid-template-areas: 
+    ". main main ."
+    ". . . .";
+ }
+
+ #main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    grid-area:main;
+    padding: 1em 28em 8em 28em;
+    border-radius:5em;
+    border:solid 0.5em rgba(255, 119, 0, 0.526);
+    box-shadow:1em 1em rgba(0, 255, 238, 0.784);
+ }
+
+ h1, h2, h3, p{
+    width:50em;
+ }
+
+ h1, h2, h3{
+    text-align: center;
+ }
+
+ p{
+    font-size: 1.5em;
+ }
+
+ h3{
+    font-size: 1.8em;
+ }
+
+ h2{
+    font-size: 2em;
+ }
+
+ h1{
+    font-size: 3em;
+ }
