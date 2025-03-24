@@ -79,7 +79,16 @@ p{
  }
 
  #d button{
-    font-size:1em;
+    font-size:1.5em;
+ }
+
+ #d label{
+    font-size:2em;
+ }
+
+ #d input{
+    font-size: 2em;
+    margin-bottom:0.5em;
  }
 
  #quizMaker{
@@ -106,4 +115,8 @@ p{
     ". . . ."
     ". main main ."
     ". . . .";
+ }
+
+ .labelAndText{
+
  }

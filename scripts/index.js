@@ -260,14 +260,16 @@ document.getElementById("new").addEventListener("click", function (){
     d.setAttribute("id", "d");
     let l1 = document.createElement("label");
     let n = document.createElement("input");
+    let nameOfQ = document.createElement("div");
     n.setAttribute("id", `n${qNum}`);
 
     l1.innerHTML = "Question: ";
     
     document.getElementById("questionMaker").appendChild(dParent);
     dParent.appendChild(d);
-    d.appendChild(l1);
-    d.appendChild(n);
+    nameOfQ.appendChild(l1);
+    nameOfQ.appendChild(n);
+    d.appendChild(nameOfQ);
 
     let mode = document.createElement("div");
     let mulChoice = document.createElement("button");
@@ -289,7 +291,7 @@ document.getElementById("new").addEventListener("click", function (){
     mode.appendChild(tf);
     mode.appendChild(fitb);
     d.appendChild(mode);
-    d.appendChild(undo);
+    dParent.appendChild(undo);
 
     undo.addEventListener("click", function(){
         document.getElementById("questionMaker").removeChild(dParent);
@@ -311,21 +313,33 @@ document.getElementById("new").addEventListener("click", function (){
         rightAnswerLabel.innerHTML = "Correct Answer: "
         let rightAnswerType = document.createElement("input");
         rightAnswerType.setAttribute("id", `right${qNum}`);
+        let rightAnswer = document.createElement("div");
+        rightAnswer.appendChild(rightAnswerLabel);
+        rightAnswer.appendChild(rightAnswerType);
 
         let wrongAnswerLabel1 = document.createElement("label");
         wrongAnswerLabel1.innerHTML = "Option 2: "
         let wrongAnswerType1 = document.createElement("input");
         wrongAnswerType1.setAttribute("id", `wrong1${qNum}`);
+        let wrongAnswer1 = document.createElement("div");
+        wrongAnswer1.appendChild(wrongAnswerLabel1);
+        wrongAnswer1.appendChild(wrongAnswerType1);
 
         let wrongAnswerLabel2 = document.createElement("label");
         wrongAnswerLabel2.innerHTML = "Option 3: "
         let wrongAnswerType2 = document.createElement("input");
         wrongAnswerType2.setAttribute("id", `wrong2${qNum}`);
+        let wrongAnswer2 = document.createElement("div");
+        wrongAnswer2.appendChild(wrongAnswerLabel2);
+        wrongAnswer2.appendChild(wrongAnswerType2);
 
         let wrongAnswerLabel3 = document.createElement("label");
         wrongAnswerLabel3.innerHTML = "Option 4: "
         let wrongAnswerType3 = document.createElement("input");
         wrongAnswerType3.setAttribute("id",`wrong3${qNum}`);
+        let wrongAnswer3 = document.createElement("div");
+        wrongAnswer3.appendChild(wrongAnswerLabel3);
+        wrongAnswer3.appendChild(wrongAnswerType3);
 
         let submitMulChoice = document.createElement("button");
         submitMulChoice.setAttribute("id", `submit${qNum}`);
@@ -380,17 +394,13 @@ document.getElementById("new").addEventListener("click", function (){
             }
         });
 
-        inputMulChoice.appendChild(rightAnswerLabel);
-        inputMulChoice.appendChild(rightAnswerType);
+        inputMulChoice.appendChild(rightAnswer);
 
-        inputMulChoice.appendChild(wrongAnswerLabel1);
-        inputMulChoice.appendChild(wrongAnswerType1);
+        inputMulChoice.appendChild(wrongAnswer1);
 
-        inputMulChoice.appendChild(wrongAnswerLabel2);
-        inputMulChoice.appendChild(wrongAnswerType2);
+        inputMulChoice.appendChild(wrongAnswer2);
 
-        inputMulChoice.appendChild(wrongAnswerLabel3);
-        inputMulChoice.appendChild(wrongAnswerType3);
+        inputMulChoice.appendChild(wrongAnswer3);
 
         inputMulChoice.appendChild(submitMulChoice);
 
