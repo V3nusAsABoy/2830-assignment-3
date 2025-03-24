@@ -8,38 +8,71 @@ body{
     ". . . .";
  }
 
- #main{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    grid-area:main;
-    padding: 1em 28em 8em 28em;
-    border-radius:5em;
-    border:solid 0.5em rgba(255, 119, 0, 0.526);
-    box-shadow:1em 1em rgba(0, 255, 238, 0.784);
- }
+button{
+   height:5em;
+   margin-bottom:0.5em;
+}
 
- h1, h2, h3, p{
-    width:50em;
- }
+#main button:hover{
+   color:rgb(140, 180, 255);
+}
 
- h1, h2, h3{
-    text-align: center;
- }
+h1,h2,p,button,h3{
+   font-family:  -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+   width:50em;
+}
 
- p{
-    font-size: 1.5em;
- }
+h1,h2,h3{
+   text-align: center;
+}
 
- h3{
-    font-size: 1.8em;
- }
+#main{
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: white;
+   grid-area:main;
+   padding: 1em 28em 8em 28em;
+   border-radius:5em;
+   border:solid 0.5em rgba(255, 119, 0, 0.526);
+   box-shadow:1em 1em rgba(0, 255, 238, 0.784);
+}
 
- h2{
-    font-size: 2em;
- }
+nav{
+   grid-area:nav;
+   background-color: aqua;
+   position:fixed;
+   width:100%;
+   top:0;
+   left:0;
+   display:flex;
+   flex-direction: row;
+   align-content: center;
+   border-bottom:0.3em solid rgba(0, 0, 0, 0.324);
+}
 
- h1{
-    font-size: 3em;
- }
+nav > button{
+   background-color: aqua;
+   margin-bottom:auto;
+   width: 10em;
+   border-top:none;
+   border-bottom:none;
+   border-left:none;
+   border-right:solid rgba(0, 0, 0, 0.324);
+   font-size: 1em;
+}
+
+nav button:hover{
+   color:rgb(160, 59, 255);
+}
+
+@media screen and (max-width:940px){
+   #main{
+       border-radius: 0;
+       border: none;
+       box-shadow: none;
+   }
+   body{
+       background-color: white;
+   }
+}
