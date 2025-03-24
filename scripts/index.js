@@ -193,16 +193,17 @@ function displayResults(){
     document.getElementById("quiz").style.display = "none";
     document.getElementById("Question").innerHTML = `Final Score: ${score}/${questions.length}`;
     results = document.createElement("div");
+    results.setAttribute("id", "results")
     for(let i = 0; i < questions.length; i++){
         if(questions[i].selectedAnswer == questions[i].rightAnswer){
-            let q = document.createElement("h3");
+            let q = document.createElement("h2");
             let c = document.createElement("p");
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
             c.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Correct)`;
             results.appendChild(q);
             results.appendChild(c);
         } else {
-            let q = document.createElement("h3");
+            let q = document.createElement("h2");
             let c = document.createElement("p");
             let iC = document.createElement("p");
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;

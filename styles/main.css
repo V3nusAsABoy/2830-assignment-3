@@ -24,7 +24,7 @@ button{
 }
 
 #next{
-    width:15em;
+    width:11.4em;
     justify-self: flex-end;
 }
 
@@ -155,6 +155,7 @@ p{
  .option, #next{
     color:white;
     background-color: black;
+    font-size: 1.1em;
  }
 
  #textInput{
@@ -222,4 +223,18 @@ p{
 #editAndDelete > button{
     margin-left:1em;
     margin-right:1em;
+}
+
+#results{
+    display:flex;
+    flex-direction: column;
+    width:50em;
+    align-items: center;
+}
+
+#results button{
+    color:white;
+    background-color: black;
+    width:15em;
+    font-size: 1.1em;
 }
