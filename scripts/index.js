@@ -307,7 +307,7 @@ document.getElementById("new").addEventListener("click", function (){
         for(let i = 0; i < questions.length; i++){
             questions.splice(i, 1);
         }
-        document.getElementById("quizMaker").removeChild(dParent);
+        document.getElementById("questionMaker").removeChild(dParent);
     });
 
     mulChoice.addEventListener("click", function () {
@@ -402,7 +402,6 @@ document.getElementById("new").addEventListener("click", function (){
                 questionTitle.innerHTML = n.value;
                 dParent.appendChild(questionTitle);
                 dParent.appendChild(editAndDelete);
-                dParent.appendChild(deletee);
             }
             else{
                 alert("Please fill in all input fields before generating a question.");
@@ -450,13 +449,18 @@ document.getElementById("new").addEventListener("click", function (){
         let edittf = document.createElement("button");
         edittf.innerHTML = "edit";
 
+        let editAndDelete = document.createElement("div");
+        editAndDelete.setAttribute("id", "editAndDelete");
+
+        editAndDelete.appendChild(edittf);
+        editAndDelete.appendChild(deletee);
+
         edittf.addEventListener("click", function() {
             d.style.display = "block";
             undo.style.display = "none";
             undo.style.display = "none";
             submittf.style.display = "none";
-            edittf.style.display = "none";
-            deletee.style.display = "none";
+            editAndDelete.style.display = "none";
             let saveChangestf = document.createElement("button");
             saveChangestf.innerHTML = "save changes";
             saveChangestf.addEventListener("click", function(){
@@ -467,8 +471,7 @@ document.getElementById("new").addEventListener("click", function (){
                             questions[i] = new trueFalse(nameOfQuestion, true, dParent.className);;
                             document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                             d.style.display = "none";
-                            edittf.style.display = "block";
-                            deletee.style.display = "block";
+                            editAndDelete.style.display = "block";
                             d.removeChild(saveChangestf);
         
                         } else if(falseButton.classList.contains("selected")) {
@@ -476,8 +479,7 @@ document.getElementById("new").addEventListener("click", function (){
                             questions[i] = new trueFalse(nameOfQuestion, false, dParent.className);
                             document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                             d.style.display = "none";
-                            edittf.style.display = "block";
-                            deletee.style.display = "block";
+                            editAndDelete.style.display = "block";
                             d.removeChild(saveChangestf);
                         } else {
                             alert("Please indicate whether the question is true or false.");
@@ -514,8 +516,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
-                    dParent.appendChild(edittf);
-                    dParent.appendChild(deletee);
+                    dParent.appendChild(editAndDelete);
 
                 } else if(falseButton.classList.contains("selected")) {
                     nameOfQuestion = escapeInput(n.value);
@@ -527,8 +528,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
-                    dParent.appendChild(edittf);
-                    dParent.appendChild(deletee);
+                    dParent.appendChild(editAndDelete);
                 } else {
                     alert("Please indicate whether the question is true or false.");
                 }
@@ -567,12 +567,17 @@ document.getElementById("new").addEventListener("click", function (){
         let editfitb = document.createElement("button");
         editfitb.innerHTML = "edit";
 
+        let editAndDelete = document.createElement("div");
+        editAndDelete.setAttribute("id", "editAndDelete");
+
+        editAndDelete.appendChild(editfitb);
+        editAndDelete.appendChild(deletee);
+
         editfitb.addEventListener("click", function() {
             d.style.display = "block";
             undo.style.display = "none";
             submitfitb.style.display = "none";
-            editfitb.style.display = "none";
-            deletee.style.display = "none";
+            editAndDelete.style.display = "none";
             let saveChangesfitb = document.createElement("button");
             saveChangesfitb.innerHTML = "save changes";
             saveChangesfitb.addEventListener("click", function(){
@@ -585,8 +590,7 @@ document.getElementById("new").addEventListener("click", function (){
                                 questions[i] = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
                                 document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                                 d.style.display = "none";
-                                editfitb.style.display = "block";
-                                deletee.style.display = "block";
+                                editAndDelete.style.display = "block";
                                 d.removeChild(saveChangesfitb);
                             }
                         }
@@ -613,8 +617,7 @@ document.getElementById("new").addEventListener("click", function (){
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
                     questionTitle.innerHTML = n.value;
                     dParent.appendChild(questionTitle);
-                    dParent.appendChild(editfitb);
-                    dParent.appendChild(deletee);
+                    dParent.appendChild(editAndDelete);
                 } else {
                     alert("The question must include a _ since it's a fill in the blank question.");
                 }

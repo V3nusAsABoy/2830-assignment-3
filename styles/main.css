@@ -14,7 +14,7 @@ button{
 }
 
 #csvFileInput{
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-left:10em;
 }
 
@@ -183,4 +183,9 @@ p{
 #editAndDelete{
     display:flex;
     flex-direction: row;
+}
+
+#editAndDelete > button{
+    margin-left:1em;
+    margin-right:1em;
 }
