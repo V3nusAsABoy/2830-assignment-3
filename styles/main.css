@@ -138,6 +138,21 @@ p{
     ". . . .";
  }
 
+#Options{
+    width:150%;
+ }
+
+ .option, #next{
+    color:white;
+    background-color: black;
+ }
+
+ #textInput{
+    background-color:white;
+    color:black;
+    font-size:2em;
+ }
+
 #QandA{
     display:flex;
     flex-direction: column;
