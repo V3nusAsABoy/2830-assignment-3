@@ -250,3 +250,14 @@ nav button:hover{
 .privacyPolicy > h1{
     text-align: center;
 }
+
+@media screen and (max-width:940px){
+    #main{
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+    body{
+        background-color: white;
+    }
+}
