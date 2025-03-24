@@ -183,6 +183,7 @@ p{
 #editAndDelete{
     display:flex;
     flex-direction: row;
+    justify-self: center;
 }
 
 #editAndDelete > button{
