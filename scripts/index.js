@@ -634,6 +634,7 @@ document.getElementById("new").addEventListener("click", function (){
 });
 
 document.getElementById("start").addEventListener("click", function() {
+    document.body.style.gridTemplateRows = "0fr 0.4fr 2fr 2fr 2fr";
     if(questions.length > 0){
         document.getElementById("quizMaker").style.display = "none";
         shuffle(questions);
