@@ -7,26 +7,30 @@
     <link rel="stylesheet", href="./styles/main.css">
 </head>
 <body>
-    <script defer src="./scripts/index.js"></script>
-    <h2 id = "Question">Welcome to Quizzard!</h2>
-    <div id = "quizMaker">
-        <button id = "new">New Question</button>
-        <button id = "start">Start</button>
-        <h2>Import quiz from CSV</h2>
-        <input type="file" id="csvFileInput" accept=".csv" />
-        <button id = "export">Export as CSV</button>
+    <nav>
+        <button id = "privacy">privacy policy</button> <button id = "guide">guide</button>
+    </nav>
+    <div id = "main">
+        <script defer src="./scripts/index.js"></script>
+        <h1 id = "Question">Welcome to Quizzard!</h1>
+        <div id = "quizMaker">
+            <button id = "new">New Question</button>
+            <button id = "start">Start</button>
+            <h2>Import quiz from CSV</h2>
+            <input type="file" id="csvFileInput" accept=".csv" />
+            <button id = "export">Export as CSV</button>
+        </div>
+        <div id = "quiz">
+            <h2 id ="QuestionNum"></h2>
+            <ul id = "Options">
+                <button class = "option button" id = "option1"></button>
+                <button class = "option button" id = "option2"></button>
+                <button class = "option button" id = "option3"></button>
+                <button class = "option button" id = "option4"></button>
+                <input class = "option" type = "text" id = "textInput">
+            </ul>
+            <button id = "next">next</button>
+        </div>
     </div>
-    <div id = "quiz">
-        <h2 id ="QuestionNum"></h2>
-        <ul id = "Options">
-            <button class = "option button" id = "option1"></button>
-            <button class = "option button" id = "option2"></button>
-            <button class = "option button" id = "option3"></button>
-            <button class = "option button" id = "option4"></button>
-            <input class = "option" type = "text" id = "textInput">
-        </ul>
-        <button id = "next">next</button>
-    </div>
-    <footer><button id = "privacy">privacy policy</button> <button id = "guide">guide</button></footer>
 </body>
 </html>
