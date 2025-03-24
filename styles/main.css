@@ -36,6 +36,14 @@ h1,h2,p,button, #csvFileInput{
 
 h1{
     font-size:3.5em;
+    width:15em;
+}
+
+#quiz{
+    display:flex;
+    flex-direction: column;
+    width:25em;
+    justify-items: center;
 }
 
 h2{
