@@ -257,13 +257,14 @@ document.getElementById("new").addEventListener("click", function (){
     let dParent = document.createElement("div");
     dParent.classList.add(qNum);
     let d = document.createElement("div");
+    d.setAttribute("id", "d");
     let l1 = document.createElement("label");
     let n = document.createElement("input");
     n.setAttribute("id", `n${qNum}`);
 
     l1.innerHTML = "Question: ";
     
-    document.getElementById("quizMaker").appendChild(dParent);
+    document.getElementById("questionMaker").appendChild(dParent);
     dParent.appendChild(d);
     d.appendChild(l1);
     d.appendChild(n);
@@ -291,7 +292,7 @@ document.getElementById("new").addEventListener("click", function (){
     d.appendChild(undo);
 
     undo.addEventListener("click", function(){
-        document.getElementById("quizMaker").removeChild(dParent);
+        document.getElementById("questionMaker").removeChild(dParent);
     });
 
     deletee.addEventListener("click", function(){
