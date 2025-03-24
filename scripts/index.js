@@ -225,13 +225,14 @@ function displayResults(){
     editQuiz.innerHTML = "Edit quiz";
 
     restart.addEventListener("click", function() {
-        document.body.removeChild(results);
+        document.getElementById("main").removeChild(results);
         document.getElementById("quiz").style.display = "block";
         shuffle(questions);
         document.getElementById("quiz").style.display = "block";
         document.getElementById("QuestionNum").innerHTML = `Question 1 out of ${questions.length}`;
         current = 0;
         score = 0;
+        document.getElementById("next").innerHTML = "next";
         questions[0].generateQuestion();      
     });
 
@@ -240,8 +241,11 @@ function displayResults(){
     });
 
     editQuiz.addEventListener("click", function(){
-        document.body.removeChild(results);
+        document.getElementById("main").removeChild(results);
+        document.getElementById("next").innerHTML = "next";
+        document.body.style.gridTemplateRows = "0fr 0.2fr 2fr 2fr 2fr";
         document.getElementById("quizMaker").style.display = "block";
+        document.getElementById("Question").innerHTML = "Welcome to Quizzard!";
         current = 0;
         score = 0;
     });
