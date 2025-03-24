@@ -89,7 +89,7 @@ p{
     border-bottom:0.3em solid rgba(0, 0, 0, 0.324);
  }
 
- nav > button{
+nav > button{
     background-color: aqua;
     margin-bottom:auto;
     width: 10em;
@@ -99,6 +99,10 @@ p{
     border-right:solid rgba(0, 0, 0, 0.324);
     font-size: 1em;
  }
+
+nav button:hover{
+    color:rgb(160, 59, 255);
+}
 
  #quizMaker button{
     background-color: black;
