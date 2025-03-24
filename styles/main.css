@@ -2,6 +2,11 @@
     display:flex;
     flex-direction: column;
     max-width: 50em;
+    justify-self: center;
+}
+
+#QuestionNum{
+    justify-self: center;
 }
 
 button{
@@ -20,6 +25,12 @@ button{
 
 #next{
     width:15em;
+    justify-self: flex-end;
+}
+
+#nextContainer{
+    justify-self: flex-end;
+    width: 20%;
 }
 
 .selected{
@@ -43,7 +54,6 @@ h1{
     display:flex;
     flex-direction: column;
     width:25em;
-    justify-items: center;
 }
 
 h2{
