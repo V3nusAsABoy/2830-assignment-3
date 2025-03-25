@@ -411,7 +411,7 @@ document.getElementById("new").addEventListener("click", function (){
         });
 
         submitMulChoice.addEventListener("click", function () {
-            if(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value){
+            if(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value && ensureAllAreUnique() == true){
                 nameOfQuestion = escapeInput(n.value);
                 correctAns = [escapeInput(rightAnswerType.value)];
                 wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
@@ -425,10 +425,26 @@ document.getElementById("new").addEventListener("click", function (){
                 dParent.appendChild(questionTitle);
                 dParent.appendChild(editAndDelete);
             }
-            else{
+            if(ensureAllAreUnique() == false){
+                alert("Please make sure all the options for this question are distinct.")
+            }
+            if(!(n.value && rightAnswerType.value && wrongAnswerType1.value && wrongAnswerType2.value && wrongAnswerType3.value)){
                 alert("Please fill in all input fields before generating a question.");
             }
         });
+
+        function ensureAllAreUnique(){
+            allAreUnique = true;
+            submittedAnswers = [rightAnswerType.value, wrongAnswerType1.value, wrongAnswerType2.value, wrongAnswerType3.value];
+            for(i = 0; i < submittedAnswers.length; i++){
+                for(j = i + 1; j < submittedAnswers.length; j++){
+                    if(submittedAnswers[i] == submittedAnswers[j]){
+                        allAreUnique = false;
+                    }
+                }
+            }
+            return allAreUnique;
+        }
 
         inputMulChoice.appendChild(rightAnswer);
 
