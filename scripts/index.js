@@ -743,3 +743,10 @@ function exportCSV(){
     link.click();
     document.body.removeChild(link);
 }
+
+document.getElementById("colorBlind").addEventListener("click", function(){
+   const buttons =  document.getElementsByTagName("button");
+   for (var i = 0; i < buttons.length; i++){
+    buttons[i].classList.toggle("colorBlind");
+}
+});
