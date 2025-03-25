@@ -1,0 +1,285 @@
+#Options{
+    display:flex;
+    flex-direction: column;
+    max-width: 50em;
+    justify-self: center;
+}
+
+#QuestionNum{
+    justify-self: center;
+}
+
+button{
+    height:5em;
+    margin-bottom:0.5em;
+}
+
+#main button:hover{
+    color:rgb(140, 180, 255);
+}
+
+#csvFileInput{
+    font-size: 1.2em;
+    margin-left:10em;
+    color:rgb(165, 165, 165);
+    background-color: black;
+}
+
+#next{
+    width:11.4em;
+    justify-self: flex-end;
+}
+
+#nextContainer{
+    justify-self: flex-end;
+    width: 20%;
+}
+
+.selected{
+    box-shadow: 0 0 0.42em 0.16em rgb(0, 89, 255);
+}
+
+h1,h2,p,button, #csvFileInput{
+    font-family:  -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+#Question{
+    text-align: center;
+}
+
+h1{
+    font-size:3.5em;
+    width:15em;
+}
+
+#quiz{
+    display:flex;
+    flex-direction: column;
+    width:25em;
+}
+
+h2{
+    font-size:2em;
+}
+
+p{
+    font-size: 1.5em;
+}
+
+#main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    grid-area:main;
+    padding: 1em 28em 8em 28em;
+    border-radius:5em;
+    border:solid 0.5em rgba(143, 67, 0, 0.667);
+    box-shadow:1em 1em rgba(98, 0, 83, 0.784);
+    width:5em;
+ }
+
+ nav{
+    grid-area:nav;
+    background-color: rgba(98, 0, 83, 0.784);
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    display:flex;
+    flex-direction: row;
+    align-content: center;
+    border-bottom:0.3em solid rgba(0, 0, 0, 0.324);
+ }
+
+nav > button{
+    background-color: rgba(98, 0, 83, 0.784);
+    margin-bottom:auto;
+    width: 10em;
+    border-top:none;
+    border-bottom:none;
+    border-left:none;
+    border-right:solid rgba(0, 0, 0, 0.324);
+    font-size: 1em;
+ }
+
+nav button:hover{
+    color:rgb(160, 59, 255);
+}
+
+ #quizMaker button{
+    background-color: rgb(165, 165, 165);
+    color:rgb(0, 0, 0);
+    height:fit-content;
+    padding: 0.5em;
+    font-size:1.5em;
+    width:10em;
+ }
+
+ #d button{
+    font-size:1.5em;
+ }
+
+ #d label{
+    font-size:2em;
+ }
+
+ #d input{
+    font-size: 2em;
+    margin-bottom:0.5em;
+ }
+
+ #quizMaker{
+    text-align:center;
+ }
+
+ #newAndStart{
+    display:flex;
+    justify-content: center;
+ }
+
+ #newAndStart > button{
+    margin-right:1em;
+    margin-left:1em;
+ }
+
+ body{
+    background-color: rgb(0, 19, 54);
+    display:grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-rows: 0fr 0.2fr 2fr 2fr 2fr;
+    grid-template-areas: 
+    "nav nav nav nav"
+    ". . . ."
+    ". main main ."
+    ". . . .";
+ }
+
+#Options{
+    width:150%;
+ }
+
+ .option, #next{
+    color:rgb(0, 0, 0);
+    background-color: rgb(165, 165, 165);
+    font-size: 1.1em;
+ }
+
+ #textInput{
+    background-color:rgb(165, 165, 165);
+    color:black;
+    font-size:2em;
+ }
+
+#QandA{
+    display:flex;
+    flex-direction: column;
+}
+
+#QandA input{
+    height:2em;
+    margin:0;
+}
+
+.labelAndQuestion{
+    display:flex;
+    flex-direction: column;
+    background-color: black;
+    align-items: center;
+    justify-items: end;
+    margin-bottom:1em;
+    border: 0.1em solid rgb(165, 165, 165);
+    width:40em;
+    align-self: center;
+}
+
+.labelAndQuestion label{
+    color:rgb(165, 165, 165);
+}
+
+.labelAndQuestion input{
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+#mode{
+    display:flex;
+    flex-direction: row;
+}
+
+#mode button{
+    margin-right: 1em;
+    margin-left:1em;
+}
+
+#tfAnswer{
+    display:flex;
+    flex-direction: row;
+    margin-left:auto;
+}
+
+#tfAnswer > button{
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+#tfAnswer > label{
+    margin-left:1em;
+}
+
+#editAndDelete{
+    display:flex;
+    flex-direction: row;
+    justify-self: center;
+}
+
+#editAndDelete > button{
+    margin-left:1em;
+    margin-right:1em;
+}
+
+#results{
+    display:flex;
+    flex-direction: column;
+    width:50em;
+    align-items: center;
+}
+
+#results button{
+    color:black;
+    background-color: rgb(165, 165, 165);
+    width:15em;
+    font-size: 1.1em;
+}
+
+.privacyPolicy > h1, .privacyPolicy > p{
+    width: 35em;
+}
+
+.privacyPolicy > h1{
+    text-align: center;
+    color:black;
+}
+
+.colorBlind:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width:1040px){
+    #main{
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+    body{
+        background-color: black;
+    }
+}
+
+h1,h2,h3,p,a,button,label{
+    color:rgb(165, 165, 165);
+}
+
+input{
+    background-color: rgb(165, 165, 165);
+}

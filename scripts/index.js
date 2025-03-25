@@ -750,3 +750,13 @@ document.getElementById("colorBlind").addEventListener("click", function(){
     buttons[i].classList.toggle("colorBlind");
 }
 });
+
+document.getElementById("darkMode").addEventListener("click", function(){
+    if(document.getElementById("darkMode").innerHTML == "dark mode"){
+        document.querySelector("link").href = "./styles/darkmodemain.css";
+        document.getElementById("darkMode").innerHTML = "light mode";
+    } else{
+        document.querySelector("link").href = "./styles/main.css";
+        document.getElementById("darkMode").innerHTML = "dark mode";
+    }
+});
