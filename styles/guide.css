@@ -1,12 +1,28 @@
 body{
     background-color: rgb(0, 89, 255);
     display:grid;
-    grid-template-columns: 0.5fr 2fr 2fr 0.5fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
     grid-template-rows: 2fr 2fr;
     grid-template-areas: 
     ". main main ."
     ". . . .";
  }
+
+ h1{
+   font-size: 3.5em;
+ }
+
+ h2{
+   font-size:2em;
+}
+
+h3{
+   font-size:1.5em;
+}
+
+p{
+   font-size: 1.5em;
+}
 
 button{
    height:5em;
@@ -19,7 +35,7 @@ button{
 
 h1,h2,p,button,h3{
    font-family:  -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-   width:50em;
+   max-width:fit-content;
 }
 
 h1,h2,h3{
@@ -32,7 +48,7 @@ h1,h2,h3{
    align-items: center;
    background-color: white;
    grid-area:main;
-   padding: 1em 28em 8em 28em;
+   padding: 1em 5em 8em 5em;
    border-radius:5em;
    border:solid 0.5em rgba(255, 119, 0, 0.526);
    box-shadow:1em 1em rgba(0, 255, 238, 0.784);
@@ -60,6 +76,11 @@ nav > button{
    border-left:none;
    border-right:solid rgba(0, 0, 0, 0.324);
    font-size: 1em;
+}
+
+img{
+   width:40em;
+   border: 0.1em solid black;
 }
 
 nav button:hover{
