@@ -199,7 +199,7 @@ function displayResults(){
             let q = document.createElement("h2");
             let c = document.createElement("p");
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
-            c.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Correct)`;
+            c.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} &#9989;`;
             results.appendChild(q);
             results.appendChild(c);
         } else {
@@ -208,7 +208,7 @@ function displayResults(){
             let iC = document.createElement("p");
             q.innerHTML = `Question ${i + 1}: ${questions[i].question}`;
             c.innerHTML = `Answer: ${questions[i].rightAnswer}`;
-            iC.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} (Incorrect)`;
+            iC.innerHTML = `Selected Answer: ${questions[i].selectedAnswer} &#10060;`;
             results.appendChild(q);
             results.appendChild(iC);
             results.appendChild(c);
@@ -728,6 +728,8 @@ function makeQuizFromCSV(importedQs){
             document.getElementById(`right${qNum}`).value = importedQs[i][2];
         }
         document.getElementById(`submit${qNum}`).click();
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 }
 
