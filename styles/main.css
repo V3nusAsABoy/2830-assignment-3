@@ -175,7 +175,6 @@ nav button:hover{
 }
 
 #QandA input{
-    width:99%;
     height:2em;
     margin:0;
 }
@@ -188,10 +187,16 @@ nav button:hover{
     justify-items: end;
     margin-bottom:1em;
     border: 0.1em solid black;
+    width:40em;
+    align-self: center;
 }
 
 .labelAndQuestion label{
     color:white;
+}
+
+.labelAndQuestion input{
+    width:19.7em;
 }
 
 #mode{
