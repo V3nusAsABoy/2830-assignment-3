@@ -243,6 +243,7 @@ function displayResults(){
     editQuiz.addEventListener("click", function(){
         document.getElementById("main").removeChild(results);
         document.getElementById("next").innerHTML = "next";
+        document.getElementById("quiz").style.display = "none";
         document.body.style.gridTemplateRows = "0fr 0.2fr 2fr 2fr 2fr";
         document.getElementById("quizMaker").style.display = "block";
         document.getElementById("Question").innerHTML = "Welcome to Quizzard!";
