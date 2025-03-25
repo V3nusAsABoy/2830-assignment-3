@@ -74,6 +74,7 @@ p{
     border-radius:5em;
     border:solid 0.5em rgba(255, 119, 0, 0.526);
     box-shadow:1em 1em rgba(0, 255, 238, 0.784);
+    width:5em;
  }
 
  nav{
