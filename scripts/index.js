@@ -318,6 +318,8 @@ document.getElementById("new").addEventListener("click", function (){
     mode.appendChild(fitb);
     d.appendChild(mode);
     dParent.appendChild(undo);
+    QandA.scrollIntoView();
+    window.scrollBy(0, -100);
 
     undo.addEventListener("click", function(){
         document.getElementById("questionMaker").removeChild(dParent);
@@ -393,7 +395,7 @@ document.getElementById("new").addEventListener("click", function (){
             saveChangesMulChoice.innerHTML = "save changes";
             saveChangesMulChoice.addEventListener("click", function(){
                 for(let i = 0; i < questions.length; i++){
-                    if(questions[i].id == dParent.className){
+                    if(dParent.classList.contains(questions[i].id)){
                         nameOfQuestion = escapeInput(n.value);
                         correctAns = [escapeInput(rightAnswerType.value)];
                         wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
@@ -485,10 +487,11 @@ document.getElementById("new").addEventListener("click", function (){
             saveChangestf.innerHTML = "save changes";
             saveChangestf.addEventListener("click", function(){
                 for(let i = 0; i < questions.length; i++){
-                    if(questions[i].id == dParent.className){
+                    if(dParent.classList.contains(questions[i].id)){
                         if(trueButton.classList.contains("selected")){
                             nameOfQuestion = escapeInput(n.value);
-                            questions[i] = new trueFalse(nameOfQuestion, true, dParent.className);;
+                            newId = questions[i].id;
+                            questions[i] = new trueFalse(nameOfQuestion, true, newId);
                             document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                             d.style.display = "none";
                             editAndDelete.style.display = "block";
@@ -496,7 +499,8 @@ document.getElementById("new").addEventListener("click", function (){
         
                         } else if(falseButton.classList.contains("selected")) {
                             nameOfQuestion = escapeInput(n.value);
-                            questions[i] = new trueFalse(nameOfQuestion, false, dParent.className);
+                            newId = questions[i].id;
+                            questions[i] = new trueFalse(nameOfQuestion, false, newId);
                             document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                             d.style.display = "none";
                             editAndDelete.style.display = "block";

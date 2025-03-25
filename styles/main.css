@@ -272,3 +272,7 @@ nav button:hover{
         background-color: white;
     }
 }
+
+.dParent{
+    scroll-margin-top: 10px;
+}
