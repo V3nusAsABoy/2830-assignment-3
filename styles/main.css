@@ -196,7 +196,8 @@ nav button:hover{
 }
 
 .labelAndQuestion input{
-    width:19.7em;
+    width: 100%; 
+    box-sizing: border-box;
 }
 
 #mode{
