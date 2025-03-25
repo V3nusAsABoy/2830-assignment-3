@@ -15,7 +15,7 @@ button{
 }
 
 #main button:hover{
-    color:rgb(140, 180, 255);
+    color:rgb(0, 58, 167);
 }
 
 #csvFileInput{
@@ -104,7 +104,7 @@ nav > button{
  }
 
 nav button:hover{
-    color:rgb(160, 59, 255);
+    color:rgba(0, 255, 238, 0.784);
 }
 
  #quizMaker button{
