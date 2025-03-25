@@ -263,7 +263,7 @@ nav button:hover{
     text-decoration: underline;
 }
 
-@media screen and (max-width:940px){
+@media screen and (max-width:1040px){
     #main{
         border-radius: 0;
         border: none;
