@@ -237,7 +237,20 @@ function displayResults(){
     });
 
     newQuiz.addEventListener("click", function(){
-        location.reload();
+        document.getElementById("main").removeChild(results);
+        document.getElementById("next").innerHTML = "next";
+        document.getElementById("quiz").style.display = "none";
+        document.body.style.gridTemplateRows = "0fr 0.2fr 2fr 2fr 2fr";
+        document.getElementById("quizMaker").style.display = "block";
+        document.getElementById("Question").innerHTML = "Welcome to Quizzard!";
+        current = 0;
+        score = 0;
+        questions = [];
+        questionDivs = document.getElementsByClassName("dParent");
+        e = questionDivs.length;
+        for(i = 0; i < e; i++){
+            document.getElementById("questionMaker").removeChild(questionDivs[0]);
+        }
     });
 
     editQuiz.addEventListener("click", function(){
@@ -262,6 +275,7 @@ document.getElementById("new").addEventListener("click", function (){
     qNum++;
     let dParent = document.createElement("div");
     dParent.classList.add(qNum);
+    dParent.classList.add("dParent")
     let d = document.createElement("div");
     d.setAttribute("id", "d");
     let l1 = document.createElement("label");
