@@ -399,7 +399,8 @@ document.getElementById("new").addEventListener("click", function (){
                         nameOfQuestion = escapeInput(n.value);
                         correctAns = [escapeInput(rightAnswerType.value)];
                         wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
-                        questions[i] = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.className);
+                        newId = questions[i].id;
+                        questions[i] = new multipleChoice(nameOfQuestion, correctAns, wrongAns, newId);
                         document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
                         d.style.display = "none";
                         editAndDelete.style.display = "block";
@@ -415,7 +416,7 @@ document.getElementById("new").addEventListener("click", function (){
                 nameOfQuestion = escapeInput(n.value);
                 correctAns = [escapeInput(rightAnswerType.value)];
                 wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
-                q = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.className);
+                q = new multipleChoice(nameOfQuestion, correctAns, wrongAns, dParent.classList[0]);
                 questions = questions.concat(q);
                 d.style.display = "none";
                 undo.style.display = "none";
@@ -548,7 +549,7 @@ document.getElementById("new").addEventListener("click", function (){
             if(n.value){
                 if(trueButton.classList.contains("selected")){
                     nameOfQuestion = escapeInput(n.value);
-                    q = new trueFalse(nameOfQuestion, true, qNum);
+                    q = new trueFalse(nameOfQuestion, true, dParent.classList[0]);
                     questions = questions.concat(q);
                     d.style.display = "none";
                     undo.style.display = "none";
@@ -560,7 +561,7 @@ document.getElementById("new").addEventListener("click", function (){
 
                 } else if(falseButton.classList.contains("selected")) {
                     nameOfQuestion = escapeInput(n.value);
-                    q = new trueFalse(nameOfQuestion, false, qNum);
+                    q = new trueFalse(nameOfQuestion, false, dParent.classList[0]);
                     questions = questions.concat(q);
                     d.style.display = "none";
                     undo.style.display = "none";
@@ -649,7 +650,7 @@ document.getElementById("new").addEventListener("click", function (){
                 if(n.value.includes("_")){
                     nameOfQuestion = escapeInput(n.value);
                     answerToQuestion = escapeInput(answerType.value);
-                    q = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
+                    q = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.classList[0]);
                     questions = questions.concat(q);
                     undo.style.display = "none";
                     d.style.display = "none";
