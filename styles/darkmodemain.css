@@ -261,6 +261,10 @@ nav button:hover{
     color:rgb(165, 165, 165);
 }
 
+.privacyPolicy > p{
+    max-width: 30em;
+}
+
 .colorBlind:hover{
     text-decoration: underline;
 }

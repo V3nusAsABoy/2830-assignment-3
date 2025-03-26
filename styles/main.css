@@ -258,6 +258,10 @@ nav button:hover{
     text-align: center;
 }
 
+.privacyPolicy > p{
+    max-width: 30em;
+}
+
 .colorBlind:hover{
     text-decoration: underline;
 }
