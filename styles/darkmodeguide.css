@@ -101,3 +101,32 @@ nav button:hover{
        background-color: white;
    }
 }
+
+#adjustFont{
+   width:auto;
+   border-right:none;
+   padding-right:0.1em;
+}
+
+#buttonbuttonbutton{
+   width:auto;
+   padding-left:0em;
+   text-align:left;
+   
+}
+
+#adjustFont:hover, #buttonbuttonbutton:hover{
+   color:rgb(165, 165, 165);
+}
+
+#plusle,#minun{
+   border-radius:15em;
+   font-size:3em;
+   padding:0em 0.3em 0em 0.3em;
+   background-color: rgba(98, 0, 83, 0.784);
+   border: solid rgb(165, 165, 165) 0.1em;
+}
+
+#plusle:hover,#minun:hover{
+   color:rgba(0, 255, 238, 0.784);
+}
