@@ -124,35 +124,35 @@ let qNum = 0;
 let finalScore;
 
 document.body.addEventListener("keypress", function(event) {
-    if (event.key === "Enter" && document.getElementById("next").style.display != "none") {
+    if (event.key === "Enter" && document.getElementById("next").style.display != "none" && document.getElementById("quizMaker").style.display === "none") {
     event.preventDefault();
     document.getElementById("next").click();
     }
 });
 
 document.body.addEventListener("keypress", function(event) {
-    if (event.key === "1" && document.getElementById("option1").style.display === "block") {
+    if (event.key === "1" && document.getElementById("option1").style.display === "block" && document.getElementById("quizMaker").style.display == "none") {
     event.preventDefault();
     document.getElementById("option1").click();
     }
 });
 
 document.body.addEventListener("keypress", function(event) {
-    if (event.key === "2" && document.getElementById("option2").style.display === "block") {
+    if (event.key === "2" && document.getElementById("option2").style.display === "block" && document.getElementById("quizMaker").style.display == "none") {
     event.preventDefault();
     document.getElementById("option2").click();
     }
 });
 
 document.body.addEventListener("keypress", function(event) {
-    if (event.key === "3" && document.getElementById("option3").style.display === "block") {
+    if (event.key === "3" && document.getElementById("option3").style.display === "block" && document.getElementById("quizMaker").style.display == "none") {
     event.preventDefault();
     document.getElementById("option3").click();
     }
 });
 
 document.body.addEventListener("keypress", function(event) {
-    if (event.key === "4" && document.getElementById("option4").style.display === "block") {
+    if (event.key === "4" && document.getElementById("option4").style.display === "block" && document.getElementById("quizMaker").style.display == "none") {
     event.preventDefault();
     document.getElementById("option4").click();
     }
@@ -327,7 +327,9 @@ document.getElementById("new").addEventListener("click", function (){
 
     deletee.addEventListener("click", function(){
         for(let i = 0; i < questions.length; i++){
-            questions.splice(i, 1);
+            if(questions[i].id == dParent.classList[0]){
+                questions.splice(i, 1);
+            }
         }
         document.getElementById("questionMaker").removeChild(dParent);
     });
@@ -625,7 +627,7 @@ document.getElementById("new").addEventListener("click", function (){
                 if(n.value && answerType.value){
                     if(n.value.includes("_")){
                         for(let i = 0; i < questions.length; i++){
-                            if(questions[i].id == dParent.className){
+                            if(dParent.classList.contains(questions[i].id)){
                                 nameOfQuestion = escapeInput(n.value);
                                 answerToQuestion = escapeInput(answerType.value);
                                 questions[i] = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
