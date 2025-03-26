@@ -787,7 +787,9 @@ function exportCSV(){
 document.getElementById("colorBlind").addEventListener("click", function(){
    const buttons =  document.getElementsByTagName("button");
    for (var i = 0; i < buttons.length; i++){
-    buttons[i].classList.toggle("colorBlind");
+    if(buttons[i].innerHTML != "adjust font:"){
+        buttons[i].classList.toggle("colorBlind");
+    }
 }
 });
 
