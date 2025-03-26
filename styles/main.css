@@ -272,3 +272,32 @@ nav button:hover{
         background-color: white;
     }
 }
+
+#adjustFont{
+    width:6em;
+    border-right:none;
+    padding-right:0.1em;
+}
+
+#buttonbuttonbutton{
+    width:10em;
+    padding-left:0em;
+    text-align:left;
+    
+}
+
+#adjustFont:hover, #buttonbuttonbutton:hover{
+    color:black;
+}
+
+#plusle,#minun{
+    border-radius:15em;
+    font-size:3em;
+    padding:0em 0.3em 0em 0.3em;
+    background-color: rgb(116, 255, 255);
+    border: solid black 0.1em;
+}
+
+#plusle:hover,#minun:hover{
+    color:rgb(160, 59, 255);
+}
