@@ -240,7 +240,6 @@ function displayResults(){
         document.getElementById("main").removeChild(results);
         document.getElementById("next").innerHTML = "next";
         document.getElementById("quiz").style.display = "none";
-        document.body.style.gridTemplateRows = "0fr 0.2fr 2fr 2fr 2fr";
         document.getElementById("quizMaker").style.display = "block";
         document.getElementById("Question").innerHTML = "Welcome to Quizzard!";
         current = 0;
@@ -257,7 +256,6 @@ function displayResults(){
         document.getElementById("main").removeChild(results);
         document.getElementById("next").innerHTML = "next";
         document.getElementById("quiz").style.display = "none";
-        document.body.style.gridTemplateRows = "0fr 0.2fr 2fr 2fr 2fr";
         document.getElementById("quizMaker").style.display = "block";
         document.getElementById("Question").innerHTML = "Welcome to Quizzard!";
         current = 0;
@@ -677,7 +675,6 @@ document.getElementById("new").addEventListener("click", function (){
 });
 
 document.getElementById("start").addEventListener("click", function() {
-    document.body.style.gridTemplateRows = "0fr 0.4fr 2fr 2fr 2fr";
     if(questions.length > 0){
         document.getElementById("quizMaker").style.display = "none";
         shuffle(questions);
