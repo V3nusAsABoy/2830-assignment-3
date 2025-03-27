@@ -737,7 +737,7 @@ function makeQuizFromCSV(importedQs){
             document.getElementById(`wrong3${qNum}`).value = importedQs[i][5];
         } else if(importedQs[i][1] == "Tf"){
             document.getElementById(`tf${qNum}`).click();
-            if(importedQs[i][2] == "TRUE"){
+            if(importedQs[i][2] == "True"){
                 document.getElementById(`true${qNum}`).click();
             } else {
                 document.getElementById(`false${qNum}`).click();
