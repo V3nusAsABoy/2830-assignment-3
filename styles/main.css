@@ -287,6 +287,9 @@ nav button:hover{
     body{
         background-color: white;
     }
+    #plusle,#minun{
+        font-size:0.5em;
+     }
 }
 
 #adjustFont{
