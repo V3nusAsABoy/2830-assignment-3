@@ -98,6 +98,13 @@ function shuffle(array) {
     }
 }
 
+function undoQuote(input){
+    if(typeof input === "string"){
+        return input.replace(/"/g, '&quot;')
+                    .replace(/'/g, "&#039;");
+    }
+}
+
 function escapeInput(input) {
     return input.replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
@@ -163,18 +170,19 @@ var input = document.getElementById("myInput");
 document.getElementById("next").addEventListener("click", function () {
     for (let i = 0; i < options.length; i++) {
         if (options[i].classList.contains("selected")) {
-            questions[current].selectedAnswer = options[i].innerHTML;
+            questions[current].selectedAnswer = undoQuote(options[i].innerHTML);
             if (questions[current].selectedAnswer == questions[current].rightAnswer) {
                 score++;
             }
             options[i].classList.remove("selected");
             i = options.length;
         } else if (options[i].id == "textInput"){
-            userInput = escapeInput(options[i].value);
+            userInput = undoQuote(escapeInput(options[i].value));
             questions[current].selectedAnswer = userInput;
             if (questions[current].selectedAnswer == questions[current].rightAnswer) {
                 score++;
             }
+            options[i].value = "";
         }
     }
     current++;
