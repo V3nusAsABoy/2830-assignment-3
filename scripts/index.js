@@ -98,6 +98,18 @@ function shuffle(array) {
     }
 }
 
+function undoComma(input){
+    if(typeof input == "string"){
+        return input.replace(/,/g, '&#44;');
+    }
+}
+
+function returnComma(input){
+    if(typeof input == "string"){
+        return input.replace(/&#44;/g, ',');
+    }
+}
+
 function undoQuote(input){
     if(typeof input === "string"){
         return input.replace(/"/g, '&quot;')
@@ -733,13 +745,13 @@ document.getElementById("csvFileInput").addEventListener("change", function (eve
 function makeQuizFromCSV(importedQs){
     for(let i = 1; i < importedQs.length; i++){
         document.getElementById("new").click();
-        document.getElementById(`n${qNum}`).value = importedQs[i][0];
+        document.getElementById(`n${qNum}`).value = returnComma(importedQs[i][0]);
         if(importedQs[i][1] == "Multiple choice"){
             document.getElementById(`mulChoice${qNum}`).click();
-            document.getElementById(`right${qNum}`).value = importedQs[i][2];
-            document.getElementById(`wrong1${qNum}`).value = importedQs[i][3];
-            document.getElementById(`wrong2${qNum}`).value = importedQs[i][4];
-            document.getElementById(`wrong3${qNum}`).value = importedQs[i][5];
+            document.getElementById(`right${qNum}`).value = returnComma(importedQs[i][2]);
+            document.getElementById(`wrong1${qNum}`).value = returnComma(importedQs[i][3]);
+            document.getElementById(`wrong2${qNum}`).value = returnComma(importedQs[i][4]);
+            document.getElementById(`wrong3${qNum}`).value = returnComma(importedQs[i][5]);
         } else if(importedQs[i][1] == "Tf"){
             document.getElementById(`tf${qNum}`).click();
             if(importedQs[i][2] == "True"){
@@ -749,7 +761,7 @@ function makeQuizFromCSV(importedQs){
             }
         } else{
             document.getElementById(`fitb${qNum}`).click();
-            document.getElementById(`right${qNum}`).value = importedQs[i][2];
+            document.getElementById(`right${qNum}`).value = returnComma(importedQs[i][2]);
         }
         document.getElementById(`submit${qNum}`).click();
         document.body.scrollTop = 0;
@@ -769,11 +781,11 @@ function exportCSV(){
     toExport = [["Question", "Type", "Right Answer", "Wrong Answer 1", "Wrong Answer 2", "Wrong Answer 3"]];
     for(let i = 0; i < questions.length; i++){
         if(questions[i].type === "Multiple Choice"){
-            toExport.push([reverseEscapeInput(questions[i].question), "Multiple choice", reverseEscapeInput(questions[i].rightAnswer[0]), reverseEscapeInput(questions[i].wrongAnswers[0]), reverseEscapeInput(questions[i].wrongAnswers[1]), reverseEscapeInput(questions[i].wrongAnswers[2])]);
+            toExport.push([undoComma(reverseEscapeInput(questions[i].question)), "Multiple choice", undoComma(reverseEscapeInput(questions[i].rightAnswer[0])), undoComma(reverseEscapeInput(questions[i].wrongAnswers[0])), undoComma(reverseEscapeInput(questions[i].wrongAnswers[1])), undoComma(reverseEscapeInput(questions[i].wrongAnswers[2]))]);
         } else if(questions[i].type === "True/False"){
-            toExport.push([reverseEscapeInput(questions[i].question), "Tf", reverseEscapeInput(questions[i].rightAnswer)]);
+            toExport.push([undoComma(reverseEscapeInput(questions[i].question)), "Tf", undoComma(reverseEscapeInput(questions[i].rightAnswer))]);
         } else {
-            toExport.push([reverseEscapeInput(questions[i].question), "Fitb", reverseEscapeInput(questions[i].rightAnswer)]);
+            toExport.push([undoComma(reverseEscapeInput(questions[i].question)), "Fitb", undoComma(reverseEscapeInput(questions[i].rightAnswer))]);
         }
     }
     let csvContent = toExport.map(e => e.join(",")).join("\n");
