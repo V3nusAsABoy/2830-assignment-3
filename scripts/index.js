@@ -421,7 +421,7 @@ document.getElementById("new").addEventListener("click", function (){
                         wrongAns = [escapeInput(wrongAnswerType1.value), escapeInput(wrongAnswerType2.value), escapeInput(wrongAnswerType3.value)];
                         newId = questions[i].id;
                         questions[i] = new multipleChoice(nameOfQuestion, correctAns, wrongAns, newId);
-                        document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
+                        document.getElementById(`questionTitle${dParent.className}`).innerHTML = nameOfQuestion;
                         d.style.display = "none";
                         editAndDelete.style.display = "block";
                         d.removeChild(saveChangesMulChoice);
@@ -442,7 +442,7 @@ document.getElementById("new").addEventListener("click", function (){
                 undo.style.display = "none";
                 questionTitle = document.createElement("h2");
                 questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
-                questionTitle.innerHTML = n.value;
+                questionTitle.innerHTML = nameOfQuestion;
                 dParent.appendChild(questionTitle);
                 dParent.appendChild(editAndDelete);
             }
@@ -529,7 +529,7 @@ document.getElementById("new").addEventListener("click", function (){
                             nameOfQuestion = escapeInput(n.value);
                             newId = questions[i].id;
                             questions[i] = new trueFalse(nameOfQuestion, true, newId);
-                            document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
+                            document.getElementById(`questionTitle${dParent.className}`).innerHTML = nameOfQuestion;
                             d.style.display = "none";
                             editAndDelete.style.display = "block";
                             d.removeChild(saveChangestf);
@@ -538,7 +538,7 @@ document.getElementById("new").addEventListener("click", function (){
                             nameOfQuestion = escapeInput(n.value);
                             newId = questions[i].id;
                             questions[i] = new trueFalse(nameOfQuestion, false, newId);
-                            document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
+                            document.getElementById(`questionTitle${dParent.className}`).innerHTML = nameOfQuestion;
                             d.style.display = "none";
                             editAndDelete.style.display = "block";
                             d.removeChild(saveChangestf);
@@ -575,7 +575,7 @@ document.getElementById("new").addEventListener("click", function (){
                     undo.style.display = "none";
                     questionTitle = document.createElement("h2");
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
-                    questionTitle.innerHTML = n.value;
+                    questionTitle.innerHTML = nameOfQuestion;
                     dParent.appendChild(questionTitle);
                     dParent.appendChild(editAndDelete);
 
@@ -587,7 +587,7 @@ document.getElementById("new").addEventListener("click", function (){
                     undo.style.display = "none";
                     questionTitle = document.createElement("h2");
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
-                    questionTitle.innerHTML = n.value;
+                    questionTitle.innerHTML = nameOfQuestion;
                     dParent.appendChild(questionTitle);
                     dParent.appendChild(editAndDelete);
                 } else {
@@ -649,7 +649,7 @@ document.getElementById("new").addEventListener("click", function (){
                                 nameOfQuestion = escapeInput(n.value);
                                 answerToQuestion = escapeInput(answerType.value);
                                 questions[i] = new fillInTheBlank(nameOfQuestion, answerToQuestion, dParent.className);
-                                document.getElementById(`questionTitle${dParent.className}`).innerHTML = n.value;
+                                document.getElementById(`questionTitle${dParent.className}`).innerHTML = nameOfQuestion;
                                 d.style.display = "none";
                                 editAndDelete.style.display = "block";
                                 d.removeChild(saveChangesfitb);
@@ -676,7 +676,7 @@ document.getElementById("new").addEventListener("click", function (){
                     d.style.display = "none";
                     questionTitle = document.createElement("h2");
                     questionTitle.setAttribute("id", `questionTitle${dParent.className}`);
-                    questionTitle.innerHTML = n.value;
+                    questionTitle.innerHTML = nameOfQuestion;
                     dParent.appendChild(questionTitle);
                     dParent.appendChild(editAndDelete);
                 } else {
