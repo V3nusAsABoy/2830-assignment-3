@@ -278,20 +278,6 @@ nav button:hover{
     text-decoration: underline;
 }
 
-@media screen and (max-width:1040px){
-    #main{
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-    }
-    body{
-        background-color: white;
-    }
-    #plusle,#minun{
-        font-size:0.5em;
-     }
-}
-
 #adjustFont{
     width:6em;
     border-right:none;
@@ -319,4 +305,18 @@ nav button:hover{
 
 #plusle:hover,#minun:hover{
     color:rgb(160, 59, 255);
+}
+
+@media screen and (max-width:1040px){
+    #main{
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+    body{
+        background-color: white;
+    }
+    #plusle,#minun{
+        font-size:2em;
+     }
 }
