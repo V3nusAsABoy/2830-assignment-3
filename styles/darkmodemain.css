@@ -9,6 +9,12 @@
     justify-self: center;
 }
 
+#questionMaker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 button{
     height:5em;
     margin-bottom:0.5em;
